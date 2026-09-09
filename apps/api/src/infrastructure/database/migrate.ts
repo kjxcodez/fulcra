@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs"
+import { resolve } from "node:path"
 import { neon } from "@neondatabase/serverless"
 import { drizzle } from "drizzle-orm/neon-http"
 import { migrate } from "drizzle-orm/neon-http/migrator"
@@ -19,8 +21,23 @@ export async function runMigrations(databaseUrl?: string): Promise<void> {
   logger.info("Ensuring PostgreSQL pgvector extension is enabled...")
   await sql`CREATE EXTENSION IF NOT EXISTS vector;`
 
-  logger.info("Applying migrations from ./drizzle...")
-  await migrate(db, { migrationsFolder: "./drizzle" })
+  const currentDir =
+    typeof import.meta.dirname === "string"
+      ? import.meta.dirname
+      : process.cwd()
+
+  const candidateMigrationFolders = [
+    resolve(process.cwd(), "drizzle"),
+    resolve(process.cwd(), "apps/api/drizzle"),
+    resolve(currentDir, "../../../drizzle"),
+  ]
+
+  const migrationsFolder =
+    candidateMigrationFolders.find((folder) => existsSync(folder)) ||
+    "./drizzle"
+
+  logger.info(`Applying migrations from ${migrationsFolder}...`)
+  await migrate(db, { migrationsFolder })
   logger.info("Database migrations applied successfully.")
 }
 

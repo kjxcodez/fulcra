@@ -7,9 +7,10 @@ import * as schema from "./schema"
 export type FulcraDatabase = NeonHttpDatabase<typeof schema>
 
 export function createDbClient(connectionString?: string): FulcraDatabase {
-  const url = connectionString || env.DATABASE_URL
+  const url =
+    connectionString !== undefined ? connectionString : env.DATABASE_URL
 
-  if (!url) {
+  if (!url || !url.trim()) {
     // Return proxy that alerts when queried without configuration
     return new Proxy({} as FulcraDatabase, {
       get(_target, prop) {

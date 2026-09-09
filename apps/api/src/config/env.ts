@@ -1,4 +1,31 @@
+import { existsSync } from "node:fs"
+import { resolve } from "node:path"
 import { z } from "zod"
+
+// Load environment variables from .env files if present (Node >= 20.12)
+if (typeof process.loadEnvFile === "function") {
+  const currentDir =
+    typeof import.meta.dirname === "string"
+      ? import.meta.dirname
+      : process.cwd()
+
+  const candidatePaths = [
+    resolve(process.cwd(), ".env"),
+    resolve(process.cwd(), ".env.local"),
+    resolve(currentDir, "../../.env"),
+    resolve(currentDir, "../../../.env"),
+  ]
+
+  for (const envPath of candidatePaths) {
+    try {
+      if (existsSync(envPath)) {
+        process.loadEnvFile(envPath)
+      }
+    } catch {
+      // Ignore if file cannot be read or is invalid
+    }
+  }
+}
 
 const envSchema = z.object({
   NODE_ENV: z
