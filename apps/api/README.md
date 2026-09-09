@@ -28,6 +28,15 @@ apps/api/
 │   │   └── index.ts
 │   │
 │   ├── infrastructure/
+│   │   ├── database/         # Neon PostgreSQL + Drizzle ORM client & schema
+│   │   │   ├── client.ts
+│   │   │   ├── migrate.ts
+│   │   │   ├── schema/
+│   │   │   │   ├── users.ts
+│   │   │   │   ├── candidate-profiles.ts
+│   │   │   │   └── index.ts
+│   │   │   └── index.ts
+│   │   │
 │   │   └── logger/           # Structured logging boundary with sanitization
 │   │       ├── logger.ts
 │   │       └── index.ts
@@ -181,17 +190,44 @@ Request
 
 Configuration is validated on startup with Zod in [`src/config/env.ts`](src/config/env.ts):
 
-| Variable      | Type     | Default                 | Description                                         |
-| ------------- | -------- | ----------------------- | --------------------------------------------------- |
-| `NODE_ENV`    | `enum`   | `development`           | `development`, `test`, or `production`              |
-| `PORT`        | `number` | `4000`                  | HTTP port for local Node server                     |
-| `API_ENV`     | `enum`   | `local`                 | `local`, `development`, `staging`, `production`     |
-| `WEB_ORIGIN`  | `string` | `http://localhost:3000` | Allowed CORS origins (comma-separated for multiple) |
-| `API_VERSION` | `string` | `0.1.0`                 | API version returned by `/version`                  |
+| Variable       | Type     | Default                 | Description                                         |
+| -------------- | -------- | ----------------------- | --------------------------------------------------- |
+| `NODE_ENV`     | `enum`   | `development`           | `development`, `test`, or `production`              |
+| `PORT`         | `number` | `4000`                  | HTTP port for local Node server                     |
+| `API_ENV`      | `enum`   | `local`                 | `local`, `development`, `staging`, `production`     |
+| `WEB_ORIGIN`   | `string` | `http://localhost:3000` | Allowed CORS origins (comma-separated for multiple) |
+| `API_VERSION`  | `string` | `0.1.0`                 | API version returned by `/version`                  |
+| `DATABASE_URL` | `string` | _(optional)_            | Neon PostgreSQL connection string                   |
 
 ---
 
-## 7. Scripts
+## 7. Database Layer (Neon + Drizzle ORM)
+
+The database layer is owned directly by `apps/api` in `src/infrastructure/database/`:
+
+- **Serverless PostgreSQL**: Neon via `@neondatabase/serverless` using HTTP fetch queries.
+- **Initial Tables**: `users` (canonical identity) and `candidate_profiles` (1-to-0..1 relation with cascade delete).
+- **Vector Support**: `pgvector` extension enabled via initial migration (`CREATE EXTENSION IF NOT EXISTS vector;`).
+
+Database scripts:
+
+```bash
+# Generate SQL migration from schema diff
+pnpm --filter api db:generate
+
+# Validate migration files
+pnpm --filter api db:check
+
+# Apply migrations to database
+pnpm --filter api db:migrate
+
+# Open Drizzle Studio database browser
+pnpm --filter api db:studio
+```
+
+---
+
+## 8. Development Scripts
 
 Run commands from the repository root or within `apps/api`:
 
@@ -208,6 +244,6 @@ pnpm --filter api check-types
 # Run ESLint
 pnpm --filter api lint
 
-# Run in-memory Vitest test suite
+# Run Vitest test suite
 pnpm --filter api test
 ```
