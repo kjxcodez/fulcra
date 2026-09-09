@@ -14,8 +14,7 @@ const alertVariants = cva(
           "border-transparent bg-[var(--success-subtle)] text-[var(--success-text)] *:data-[slot=alert-description]:text-[var(--success-text)]/90 *:[svg]:text-[var(--success-text)]",
         warning:
           "border-transparent bg-[var(--warning-subtle)] text-[var(--warning-text)] *:data-[slot=alert-description]:text-[var(--warning-text)]/90 *:[svg]:text-[var(--warning-text)]",
-        info:
-          "border-transparent bg-[var(--info-subtle)] text-[var(--info)] *:data-[slot=alert-description]:text-[var(--info)]/90 *:[svg]:text-[var(--info)]",
+        info: "border-transparent bg-[var(--info-subtle)] text-[var(--info)] *:data-[slot=alert-description]:text-[var(--info)]/90 *:[svg]:text-[var(--info)]",
       },
     },
     defaultVariants: {

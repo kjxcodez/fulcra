@@ -35,32 +35,28 @@ const badgeVariants = cva(
     variants: {
       variant: {
         /** Neutral — general labeling, status, type */
-        default:
-          "border-border bg-muted text-foreground",
+        default: "border-border bg-muted text-foreground",
         /** Outline — tag/filter style */
-        outline:
-          "border-border bg-transparent text-foreground",
+        outline: "border-border bg-transparent text-foreground",
         /** Success — strong match, offer extended, confirmed */
         success:
-          "bg-[var(--success-subtle)] text-[var(--success-text)] border-transparent",
+          "border-transparent bg-[var(--success-subtle)] text-[var(--success-text)]",
         /** Warning — missing requirement, gap, needs review */
         warning:
-          "bg-[var(--warning-subtle)] text-[var(--warning-text)] border-transparent",
+          "border-transparent bg-[var(--warning-subtle)] text-[var(--warning-text)]",
         /** Danger — failed, expired, destructive state */
         danger:
-          "bg-[var(--danger-subtle)] text-[var(--danger-text)] border-transparent",
+          "border-transparent bg-[var(--danger-subtle)] text-[var(--danger-text)]",
         /** Info — informational banners/labels only */
-        info:
-          "bg-[var(--info-subtle)] text-[var(--info)] border-transparent",
+        info: "border-transparent bg-[var(--info-subtle)] text-[var(--info)]",
         /** Candidate — Brass / candidate-side context */
         candidate:
-          "bg-[var(--candidate-subtle)] text-[var(--candidate-text)] border-transparent",
+          "border-transparent bg-[var(--candidate-subtle)] text-[var(--candidate-text)]",
         /** Role — Indigo / recruiter/role-side context */
-        role:
-          "bg-[var(--role-subtle)] text-[var(--role)] border-transparent",
+        role: "border-transparent bg-[var(--role-subtle)] text-[var(--role)]",
         /** Destructive — alias for danger (shadcn compat) */
         destructive:
-          "bg-[var(--danger-subtle)] text-[var(--danger-text)] border-transparent",
+          "border-transparent bg-[var(--danger-subtle)] text-[var(--danger-text)]",
       },
     },
     defaultVariants: {

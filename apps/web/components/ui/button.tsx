@@ -26,9 +26,9 @@ const buttonVariants = cva(
     "rounded border border-transparent bg-clip-padding",
     "text-sm font-medium whitespace-nowrap",
     "font-[family-name:var(--font-sans)]",
-    "transition-colors select-none outline-none",
+    "transition-colors outline-none select-none",
     // Focus ring — Indigo at 45% opacity, 2px offset
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/45 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+    "focus-visible:ring-2 focus-visible:ring-ring/45 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
     // Disabled
     "disabled:pointer-events-none disabled:opacity-40",
     // Loading / aria-busy
@@ -50,7 +50,7 @@ const buttonVariants = cva(
          * Secondary/Outline — border + transparent fill.
          */
         outline:
-          "border-border bg-background text-foreground hover:bg-muted hover:border-[#C7C8C2] active:bg-muted aria-expanded:bg-muted",
+          "border-border bg-background text-foreground hover:border-[#C7C8C2] hover:bg-muted active:bg-muted aria-expanded:bg-muted",
         /**
          * Ghost — no border, low-emphasis (table row actions, icon buttons).
          */
@@ -61,7 +61,7 @@ const buttonVariants = cva(
          * Shows confirmation dialog before firing (app responsibility).
          */
         destructive:
-          "border-destructive/40 bg-transparent text-destructive hover:bg-destructive/10 hover:border-destructive focus-visible:ring-destructive/30",
+          "border-destructive/40 bg-transparent text-destructive hover:border-destructive hover:bg-destructive/10 focus-visible:ring-destructive/30",
         /**
          * Link — Indigo underline on hover.
          */
@@ -70,11 +70,9 @@ const buttonVariants = cva(
       size: {
         default:
           "h-10 gap-2 px-4 has-data-[icon=inline-end]:pr-3 has-data-[icon=inline-start]:pl-3",
-        sm:
-          "h-8 gap-1.5 rounded px-3 text-[0.8125rem] has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 [&_svg:not([class*='size-'])]:size-3.5",
-        lg:
-          "h-12 gap-2 px-5 has-data-[icon=inline-end]:pr-4 has-data-[icon=inline-start]:pl-4",
-        icon:    "size-10",
+        sm: "h-8 gap-1.5 rounded px-3 text-[0.8125rem] has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 [&_svg:not([class*='size-'])]:size-3.5",
+        lg: "h-12 gap-2 px-5 has-data-[icon=inline-end]:pr-4 has-data-[icon=inline-start]:pl-4",
+        icon: "size-10",
         "icon-sm": "size-8 [&_svg:not([class*='size-'])]:size-3.5",
         "icon-lg": "size-12",
       },

@@ -50,7 +50,7 @@ export default function FulcraShowcasePage() {
       <header className="sticky top-0 z-40 border-b border-border bg-card px-6 py-3.5">
         <div className="mx-auto flex max-w-6xl items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex size-8 items-center justify-center rounded bg-primary text-primary-foreground font-heading font-bold text-sm">
+            <div className="flex size-8 items-center justify-center rounded bg-primary font-heading text-sm font-bold text-primary-foreground">
               F
             </div>
             <span className="font-heading text-lg font-bold tracking-tight">
@@ -62,7 +62,9 @@ export default function FulcraShowcasePage() {
           </div>
           <div className="flex items-center gap-2">
             <Kbd>⌘K</Kbd>
-            <span className="text-xs text-muted-foreground">Command Palette</span>
+            <span className="text-xs text-muted-foreground">
+              Command Palette
+            </span>
           </div>
         </div>
       </header>
@@ -75,52 +77,71 @@ export default function FulcraShowcasePage() {
             Semantic Component Foundation
           </h1>
           <p className="max-w-2xl text-base text-muted-foreground">
-            The Base UI and shadcn primitives configured with the Fulcra design tokens: Ink, Paper,
-            Indigo, and Brass with restrained 4px/6px radii, borders over shadows, and IBM Plex typography.
+            The Base UI and shadcn primitives configured with the Fulcra design
+            tokens: Ink, Paper, Indigo, and Brass with restrained 4px/6px radii,
+            borders over shadows, and IBM Plex typography.
           </p>
         </section>
 
         {/* 1. Color Palette Tokens */}
         <section className="space-y-4">
           <div className="border-b border-border pb-2">
-            <h2 className="font-heading text-xl font-semibold">1. Core Semantic Colors</h2>
-            <p className="text-sm text-muted-foreground">Harmonious light-mode paper-and-ink baseline palette.</p>
+            <h2 className="font-heading text-xl font-semibold">
+              1. Core Semantic Colors
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              Harmonious light-mode paper-and-ink baseline palette.
+            </p>
           </div>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-7">
             <div className="rounded border border-border bg-card p-3 shadow-xs">
-              <div className="h-10 rounded bg-[#F1F2EE] border border-border" />
-              <p className="mt-2 font-medium text-xs">Paper (Bg)</p>
-              <p className="font-mono text-[11px] text-muted-foreground">#F1F2EE</p>
+              <div className="h-10 rounded border border-border bg-[#F1F2EE]" />
+              <p className="mt-2 text-xs font-medium">Paper (Bg)</p>
+              <p className="font-mono text-[11px] text-muted-foreground">
+                #F1F2EE
+              </p>
             </div>
             <div className="rounded border border-border bg-card p-3 shadow-xs">
               <div className="h-10 rounded bg-[#14161F]" />
-              <p className="mt-2 font-medium text-xs">Ink-900 (Text)</p>
-              <p className="font-mono text-[11px] text-muted-foreground">#14161F</p>
+              <p className="mt-2 text-xs font-medium">Ink-900 (Text)</p>
+              <p className="font-mono text-[11px] text-muted-foreground">
+                #14161F
+              </p>
             </div>
             <div className="rounded border border-border bg-card p-3 shadow-xs">
               <div className="h-10 rounded bg-primary" />
-              <p className="mt-2 font-medium text-xs">Indigo (Brand)</p>
-              <p className="font-mono text-[11px] text-muted-foreground">#3552E0</p>
+              <p className="mt-2 text-xs font-medium">Indigo (Brand)</p>
+              <p className="font-mono text-[11px] text-muted-foreground">
+                #3552E0
+              </p>
             </div>
             <div className="rounded border border-border bg-card p-3 shadow-xs">
               <div className="h-10 rounded bg-[var(--candidate)]" />
-              <p className="mt-2 font-medium text-xs">Brass (Candidate)</p>
-              <p className="font-mono text-[11px] text-muted-foreground">#B08D3E</p>
+              <p className="mt-2 text-xs font-medium">Brass (Candidate)</p>
+              <p className="font-mono text-[11px] text-muted-foreground">
+                #B08D3E
+              </p>
             </div>
             <div className="rounded border border-border bg-card p-3 shadow-xs">
               <div className="h-10 rounded bg-[var(--success)]" />
-              <p className="mt-2 font-medium text-xs">Success</p>
-              <p className="font-mono text-[11px] text-muted-foreground">#1C8C5E</p>
+              <p className="mt-2 text-xs font-medium">Success</p>
+              <p className="font-mono text-[11px] text-muted-foreground">
+                #1C8C5E
+              </p>
             </div>
             <div className="rounded border border-border bg-card p-3 shadow-xs">
               <div className="h-10 rounded bg-[var(--warning)]" />
-              <p className="mt-2 font-medium text-xs">Warning</p>
-              <p className="font-mono text-[11px] text-muted-foreground">#D97706</p>
+              <p className="mt-2 text-xs font-medium">Warning</p>
+              <p className="font-mono text-[11px] text-muted-foreground">
+                #D97706
+              </p>
             </div>
             <div className="rounded border border-border bg-card p-3 shadow-xs">
               <div className="h-10 rounded bg-[var(--danger)]" />
-              <p className="mt-2 font-medium text-xs">Danger</p>
-              <p className="font-mono text-[11px] text-muted-foreground">#C4432E</p>
+              <p className="mt-2 text-xs font-medium">Danger</p>
+              <p className="font-mono text-[11px] text-muted-foreground">
+                #C4432E
+              </p>
             </div>
           </div>
         </section>
@@ -128,9 +149,12 @@ export default function FulcraShowcasePage() {
         {/* 2. Buttons */}
         <section className="space-y-4">
           <div className="border-b border-border pb-2">
-            <h2 className="font-heading text-xl font-semibold">2. Canonical Button Primitive</h2>
+            <h2 className="font-heading text-xl font-semibold">
+              2. Canonical Button Primitive
+            </h2>
             <p className="text-sm text-muted-foreground">
-              40px default height, 48px large, 4px radius, IBM Plex Sans 500 weight, Indigo focus ring.
+              40px default height, 48px large, 4px radius, IBM Plex Sans 500
+              weight, Indigo focus ring.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
@@ -148,9 +172,12 @@ export default function FulcraShowcasePage() {
         {/* 3. Badges */}
         <section className="space-y-4">
           <div className="border-b border-border pb-2">
-            <h2 className="font-heading text-xl font-semibold">3. Status Indicators & Badges</h2>
+            <h2 className="font-heading text-xl font-semibold">
+              3. Status Indicators & Badges
+            </h2>
             <p className="text-sm text-muted-foreground">
-              Soft-fill semantic styling (100-level bg + 700-level text) — never solid filled.
+              Soft-fill semantic styling (100-level bg + 700-level text) — never
+              solid filled.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
@@ -183,9 +210,12 @@ export default function FulcraShowcasePage() {
         {/* 4. Form Controls & Inputs */}
         <section className="space-y-4">
           <div className="border-b border-border pb-2">
-            <h2 className="font-heading text-xl font-semibold">4. Form Controls & Inputs</h2>
+            <h2 className="font-heading text-xl font-semibold">
+              4. Form Controls & Inputs
+            </h2>
             <p className="text-sm text-muted-foreground">
-              40px height, hairline borders, Indigo focus states, tabular numerals.
+              40px height, hairline borders, Indigo focus states, tabular
+              numerals.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
@@ -214,7 +244,10 @@ export default function FulcraShowcasePage() {
                     checked={checked}
                     onCheckedChange={(c) => setChecked(!!c)}
                   />
-                  <label htmlFor="checkbox-demo" className="text-sm text-foreground select-none">
+                  <label
+                    htmlFor="checkbox-demo"
+                    className="text-sm text-foreground select-none"
+                  >
                     Remote Only
                   </label>
                 </div>
@@ -224,7 +257,10 @@ export default function FulcraShowcasePage() {
                     checked={switchOn}
                     onCheckedChange={(c) => setSwitchOn(!!c)}
                   />
-                  <label htmlFor="switch-demo" className="text-sm text-foreground select-none">
+                  <label
+                    htmlFor="switch-demo"
+                    className="text-sm text-foreground select-none"
+                  >
                     Realtime Sync
                   </label>
                 </div>
@@ -246,9 +282,12 @@ export default function FulcraShowcasePage() {
         {/* 5. In-flow Cards & Elevation */}
         <section className="space-y-4">
           <div className="border-b border-border pb-2">
-            <h2 className="font-heading text-xl font-semibold">5. Cards (Elevation-0 In-Flow)</h2>
+            <h2 className="font-heading text-xl font-semibold">
+              5. Cards (Elevation-0 In-Flow)
+            </h2>
             <p className="text-sm text-muted-foreground">
-              Restrained border-only treatment (no drop shadow in normal flow), 6px radius.
+              Restrained border-only treatment (no drop shadow in normal flow),
+              6px radius.
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
@@ -256,16 +295,22 @@ export default function FulcraShowcasePage() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <Badge variant="role">Staff Engineer</Badge>
-                  <span className="font-mono text-xs text-muted-foreground">2d ago</span>
+                  <span className="font-mono text-xs text-muted-foreground">
+                    2d ago
+                  </span>
                 </div>
                 <CardTitle>Principal Systems Architect</CardTitle>
-                <CardDescription>Acme Distributed Computing · San Francisco, CA (Hybrid)</CardDescription>
+                <CardDescription>
+                  Acme Distributed Computing · San Francisco, CA (Hybrid)
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-muted-foreground">ATS Compatibility</span>
-                    <span className="font-mono font-semibold tabular-nums text-foreground">
+                    <span className="text-muted-foreground">
+                      ATS Compatibility
+                    </span>
+                    <span className="font-mono font-semibold text-foreground tabular-nums">
                       {progressVal}%
                     </span>
                   </div>
@@ -273,7 +318,9 @@ export default function FulcraShowcasePage() {
                 </div>
               </CardContent>
               <CardFooter className="flex items-center justify-between">
-                <span className="font-mono text-xs text-muted-foreground">$210,000 – $260,000</span>
+                <span className="font-mono text-xs text-muted-foreground">
+                  $210,000 – $260,000
+                </span>
                 <Button size="sm">
                   View Analysis
                   <ArrowUpRightIcon className="ml-1 size-3.5" />
@@ -285,15 +332,20 @@ export default function FulcraShowcasePage() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <Badge variant="candidate">Candidate Evidence</Badge>
-                  <span className="font-mono text-xs text-muted-foreground">v3 Optimized</span>
+                  <span className="font-mono text-xs text-muted-foreground">
+                    v3 Optimized
+                  </span>
                 </div>
                 <CardTitle>Technical Resume Profile</CardTitle>
-                <CardDescription>Alexander Wright · 12 Years Experience</CardDescription>
+                <CardDescription>
+                  Alexander Wright · 12 Years Experience
+                </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Extracted 18 core competencies verified across 3 past roles. All competencies have
-                  traceable evidence markers in source documentation.
+                <p className="text-xs leading-relaxed text-muted-foreground">
+                  Extracted 18 core competencies verified across 3 past roles.
+                  All competencies have traceable evidence markers in source
+                  documentation.
                 </p>
                 <div className="mt-3 flex flex-wrap gap-1.5">
                   <Badge variant="default">Distributed Systems</Badge>
@@ -315,9 +367,12 @@ export default function FulcraShowcasePage() {
         {/* 6. Tabs & Underline Indicator */}
         <section className="space-y-4">
           <div className="border-b border-border pb-2">
-            <h2 className="font-heading text-xl font-semibold">6. Underline Tabs</h2>
+            <h2 className="font-heading text-xl font-semibold">
+              6. Underline Tabs
+            </h2>
             <p className="text-sm text-muted-foreground">
-              Indigo active underline indicator with clean IBM Plex Sans typography.
+              Indigo active underline indicator with clean IBM Plex Sans
+              typography.
             </p>
           </div>
           <Tabs defaultValue="overview" className="w-full">
@@ -334,7 +389,8 @@ export default function FulcraShowcasePage() {
             </TabsContent>
             <TabsContent value="match" className="pt-4">
               <p className="text-sm text-muted-foreground">
-                Diagnostic score breakdown mapping skills against candidate evidence.
+                Diagnostic score breakdown mapping skills against candidate
+                evidence.
               </p>
             </TabsContent>
             <TabsContent value="ats" className="pt-4">
@@ -353,9 +409,12 @@ export default function FulcraShowcasePage() {
         {/* 7. Dense Data Table */}
         <section className="space-y-4">
           <div className="border-b border-border pb-2">
-            <h2 className="font-heading text-xl font-semibold">7. Data Table & Tabular Numerals</h2>
+            <h2 className="font-heading text-xl font-semibold">
+              7. Data Table & Tabular Numerals
+            </h2>
             <p className="text-sm text-muted-foreground">
-              Muted headers, hairline borders, accent selection, tabular number alignment.
+              Muted headers, hairline borders, accent selection, tabular number
+              alignment.
             </p>
           </div>
           <div className="rounded-md border border-border bg-card">
@@ -370,36 +429,60 @@ export default function FulcraShowcasePage() {
               </TableHeader>
               <TableBody>
                 <TableRow>
-                  <TableCell className="font-medium">System Architecture</TableCell>
+                  <TableCell className="font-medium">
+                    System Architecture
+                  </TableCell>
                   <TableCell>
                     <Badge variant="success">Strong Match</Badge>
                   </TableCell>
-                  <TableCell className="text-right font-mono tabular-nums font-semibold">94%</TableCell>
-                  <TableCell className="text-right font-mono tabular-nums text-muted-foreground">8 items</TableCell>
+                  <TableCell className="text-right font-mono font-semibold tabular-nums">
+                    94%
+                  </TableCell>
+                  <TableCell className="text-right font-mono text-muted-foreground tabular-nums">
+                    8 items
+                  </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">TypeScript & React Ecosystem</TableCell>
+                  <TableCell className="font-medium">
+                    TypeScript & React Ecosystem
+                  </TableCell>
                   <TableCell>
                     <Badge variant="success">Strong Match</Badge>
                   </TableCell>
-                  <TableCell className="text-right font-mono tabular-nums font-semibold">92%</TableCell>
-                  <TableCell className="text-right font-mono tabular-nums text-muted-foreground">12 items</TableCell>
+                  <TableCell className="text-right font-mono font-semibold tabular-nums">
+                    92%
+                  </TableCell>
+                  <TableCell className="text-right font-mono text-muted-foreground tabular-nums">
+                    12 items
+                  </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">Kubernetes & Container Orchestration</TableCell>
+                  <TableCell className="font-medium">
+                    Kubernetes & Container Orchestration
+                  </TableCell>
                   <TableCell>
                     <Badge variant="warning">Review Recommended</Badge>
                   </TableCell>
-                  <TableCell className="text-right font-mono tabular-nums font-semibold">68%</TableCell>
-                  <TableCell className="text-right font-mono tabular-nums text-muted-foreground">3 items</TableCell>
+                  <TableCell className="text-right font-mono font-semibold tabular-nums">
+                    68%
+                  </TableCell>
+                  <TableCell className="text-right font-mono text-muted-foreground tabular-nums">
+                    3 items
+                  </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">GraphQL Schema Design</TableCell>
+                  <TableCell className="font-medium">
+                    GraphQL Schema Design
+                  </TableCell>
                   <TableCell>
                     <Badge variant="danger">Missing Evidence</Badge>
                   </TableCell>
-                  <TableCell className="text-right font-mono tabular-nums font-semibold">32%</TableCell>
-                  <TableCell className="text-right font-mono tabular-nums text-muted-foreground">0 items</TableCell>
+                  <TableCell className="text-right font-mono font-semibold tabular-nums">
+                    32%
+                  </TableCell>
+                  <TableCell className="text-right font-mono text-muted-foreground tabular-nums">
+                    0 items
+                  </TableCell>
                 </TableRow>
               </TableBody>
             </Table>
@@ -409,7 +492,9 @@ export default function FulcraShowcasePage() {
         {/* 8. Alerts & Banners */}
         <section className="space-y-4">
           <div className="border-b border-border pb-2">
-            <h2 className="font-heading text-xl font-semibold">8. Semantic Alerts</h2>
+            <h2 className="font-heading text-xl font-semibold">
+              8. Semantic Alerts
+            </h2>
             <p className="text-sm text-muted-foreground">
               Soft-fill colored callouts matching Fulcra status guidelines.
             </p>
@@ -419,21 +504,24 @@ export default function FulcraShowcasePage() {
               <CheckCircleIcon className="size-4" />
               <AlertTitle>Profile Optimization Complete</AlertTitle>
               <AlertDescription>
-                All 5 requirements have verified source evidence. ATS compatibility estimated at 92%.
+                All 5 requirements have verified source evidence. ATS
+                compatibility estimated at 92%.
               </AlertDescription>
             </Alert>
             <Alert variant="warning">
               <AlertTriangleIcon className="size-4" />
               <AlertTitle>Resume Evidence Gap Detected</AlertTitle>
               <AlertDescription>
-                The job description requires 3+ years of Kubernetes experience, which is currently unmentioned in your CV.
+                The job description requires 3+ years of Kubernetes experience,
+                which is currently unmentioned in your CV.
               </AlertDescription>
             </Alert>
             <Alert variant="info">
               <InfoIcon className="size-4" />
               <AlertTitle>Diagnostic Notice</AlertTitle>
               <AlertDescription>
-                Scores represent diagnostic estimates based on common ATS parser algorithms, not guaranteed rankings.
+                Scores represent diagnostic estimates based on common ATS parser
+                algorithms, not guaranteed rankings.
               </AlertDescription>
             </Alert>
           </div>
@@ -442,9 +530,12 @@ export default function FulcraShowcasePage() {
         {/* 9. Loading Skeletons */}
         <section className="space-y-4">
           <div className="border-b border-border pb-2">
-            <h2 className="font-heading text-xl font-semibold">9. Loading States & Skeletons</h2>
+            <h2 className="font-heading text-xl font-semibold">
+              9. Loading States & Skeletons
+            </h2>
             <p className="text-sm text-muted-foreground">
-              Skeleton shimmer using Fulcra custom properties (--skeleton-base / --skeleton-shimmer).
+              Skeleton shimmer using Fulcra custom properties (--skeleton-base /
+              --skeleton-shimmer).
             </p>
           </div>
           <div className="grid gap-4 rounded-md border border-border bg-card p-6 md:grid-cols-3">

@@ -33,7 +33,8 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata = {
   title: "Fulcra",
-  description: "Weighs a candidate against a role — and a role against a candidate pool — continuously, and shows its work.",
+  description:
+    "Weighs a candidate against a role — and a role against a candidate pool — continuously, and shows its work.",
 }
 
 export default function RootLayout({

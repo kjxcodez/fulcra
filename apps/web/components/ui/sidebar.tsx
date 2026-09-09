@@ -494,11 +494,11 @@ const sidebarMenuButtonVariants = cva(
     "data-open:hover:bg-sidebar-accent",
     // Active state — left border indicator (Fulcra §9.25)
     // No filled background block — only a left accent border + Indigo text
-    "before:absolute before:left-0 before:top-1 before:bottom-1 before:w-0.5",
+    "before:absolute before:top-1 before:bottom-1 before:left-0 before:w-0.5",
     "before:rounded-full before:bg-sidebar-primary",
     "before:opacity-0 before:transition-opacity",
     "data-active:before:opacity-100",
-    "data-active:text-sidebar-primary data-active:font-medium",
+    "data-active:font-medium data-active:text-sidebar-primary",
     // Icon and text truncation
     "[&_svg]:size-4 [&_svg]:shrink-0 [&>span:last-child]:truncate",
   ],
@@ -511,8 +511,8 @@ const sidebarMenuButtonVariants = cva(
       },
       size: {
         default: "h-8 text-sm",
-        sm:      "h-7 text-xs",
-        lg:      "h-12 text-sm group-data-[collapsible=icon]:p-0!",
+        sm: "h-7 text-xs",
+        lg: "h-12 text-sm group-data-[collapsible=icon]:p-0!",
       },
     },
     defaultVariants: {
@@ -705,7 +705,7 @@ function SidebarMenuSubButton({
     props: mergeProps<"a">(
       {
         className: cn(
-          "flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground ring-sidebar-ring outline-hidden group-data-[collapsible=icon]:hidden hover:bg-sidebar-accent hover:text-sidebar-foreground focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[size=md]:text-sm data-[size=sm]:text-xs data-active:text-sidebar-primary data-active:font-medium [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
+          "flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground ring-sidebar-ring outline-hidden group-data-[collapsible=icon]:hidden hover:bg-sidebar-accent hover:text-sidebar-foreground focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[size=md]:text-sm data-[size=sm]:text-xs data-active:font-medium data-active:text-sidebar-primary [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
           className
         ),
       },

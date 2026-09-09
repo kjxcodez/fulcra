@@ -15,44 +15,44 @@
   --font-mono: var(--font-ibm-plex-mono);
 
   /* Radius scale — Fulcra: 4px / 6px / 12px / 999px */
-  --radius-sm:   4px;
-  --radius-md:   6px;
-  --radius-lg:   12px;
-  --radius-xl:   12px;
-  --radius-2xl:  12px;
-  --radius-3xl:  12px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+  --radius-xl: 12px;
+  --radius-2xl: 12px;
+  --radius-3xl: 12px;
   --radius-full: 999px;
 
   /* Standard shadcn semantic colors */
-  --color-background:         var(--background);
-  --color-foreground:         var(--foreground);
-  --color-card:               var(--card);
-  --color-card-foreground:    var(--card-foreground);
-  --color-popover:            var(--popover);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
-  --color-primary:            var(--primary);
+  --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-secondary:          var(--secondary);
+  --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted:              var(--muted);
-  --color-muted-foreground:   var(--muted-foreground);
-  --color-accent:             var(--accent);
-  --color-accent-foreground:  var(--accent-foreground);
-  --color-destructive:        var(--destructive);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
-  --color-border:             var(--border);
-  --color-input:              var(--input);
-  --color-ring:               var(--ring);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 
   /* Sidebar */
-  --color-sidebar:                      var(--sidebar);
-  --color-sidebar-foreground:           var(--sidebar-foreground);
-  --color-sidebar-primary:              var(--sidebar-primary);
-  --color-sidebar-primary-foreground:   var(--sidebar-primary-foreground);
-  --color-sidebar-accent:               var(--sidebar-accent);
-  --color-sidebar-accent-foreground:    var(--sidebar-accent-foreground);
-  --color-sidebar-border:               var(--sidebar-border);
-  --color-sidebar-ring:                 var(--sidebar-ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 
   /* Chart */
   --color-chart-1: var(--chart-1);
@@ -62,24 +62,24 @@
   --color-chart-5: var(--chart-5);
 
   /* Fulcra semantic extensions */
-  --color-success:             var(--success);
-  --color-success-foreground:  var(--success-foreground);
-  --color-warning:             var(--warning);
-  --color-warning-foreground:  var(--warning-foreground);
-  --color-info:                var(--info);
-  --color-info-foreground:     var(--info-foreground);
-  --color-candidate:           var(--candidate);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-candidate: var(--candidate);
   --color-candidate-foreground: var(--candidate-foreground);
-  --color-role:                var(--role);
-  --color-role-foreground:     var(--role-foreground);
+  --color-role: var(--role);
+  --color-role-foreground: var(--role-foreground);
 
   /* Soft badge backgrounds */
-  --color-success-subtle:   var(--success-subtle);
-  --color-warning-subtle:   var(--warning-subtle);
-  --color-danger-subtle:    var(--danger-subtle);
-  --color-info-subtle:      var(--info-subtle);
+  --color-success-subtle: var(--success-subtle);
+  --color-warning-subtle: var(--warning-subtle);
+  --color-danger-subtle: var(--danger-subtle);
+  --color-info-subtle: var(--info-subtle);
   --color-candidate-subtle: var(--candidate-subtle);
-  --color-role-subtle:      var(--role-subtle);
+  --color-role-subtle: var(--role-subtle);
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -87,96 +87,96 @@
    ───────────────────────────────────────────────────────────── */
 :root {
   /* ── Neutral / Layout ─────────────────────────────────────── */
-  --background:           #F1F2EE;   /* Paper — app bg */
-  --foreground:           #14161F;   /* Ink-900 — primary text */
+  --background: #f1f2ee; /* Paper — app bg */
+  --foreground: #14161f; /* Ink-900 — primary text */
 
-  --card:                 #FFFFFF;   /* Raised surface */
-  --card-foreground:      #14161F;
+  --card: #ffffff; /* Raised surface */
+  --card-foreground: #14161f;
 
-  --popover:              #FFFFFF;
-  --popover-foreground:   #14161F;
+  --popover: #ffffff;
+  --popover-foreground: #14161f;
 
-  --muted:                #F1F2EE;   /* Paper — muted fills */
-  --muted-foreground:     #6B6E7A;   /* Ink-500 — tertiary text */
+  --muted: #f1f2ee; /* Paper — muted fills */
+  --muted-foreground: #6b6e7a; /* Ink-500 — tertiary text */
 
-  --accent:               #EFF2FD;   /* Indigo-50 — hover fill */
-  --accent-foreground:    #3552E0;   /* Indigo-500 */
+  --accent: #eff2fd; /* Indigo-50 — hover fill */
+  --accent-foreground: #3552e0; /* Indigo-500 */
 
-  --border:               #DBDCD5;   /* Ink-150 — default hairline */
-  --input:                #DBDCD5;
-  --ring:                 #3552E0;   /* Indigo-500 — focus ring */
+  --border: #dbdcd5; /* Ink-150 — default hairline */
+  --input: #dbdcd5;
+  --ring: #3552e0; /* Indigo-500 — focus ring */
 
-  --radius:               4px;       /* radius-sm base */
+  --radius: 4px; /* radius-sm base */
 
   /* ── Primary — Indigo (interactive) ─────────────────────── */
-  --primary:              #3552E0;   /* Indigo-500 */
-  --primary-foreground:   #FFFFFF;
+  --primary: #3552e0; /* Indigo-500 */
+  --primary-foreground: #ffffff;
 
   /* ── Secondary — Outline/white ──────────────────────────── */
-  --secondary:            #FFFFFF;
-  --secondary-foreground: #14161F;
+  --secondary: #ffffff;
+  --secondary-foreground: #14161f;
 
   /* ── Destructive — Danger ───────────────────────────────── */
-  --destructive:              #C4432E;   /* Danger-500 */
-  --destructive-foreground:   #FFFFFF;
+  --destructive: #c4432e; /* Danger-500 */
+  --destructive-foreground: #ffffff;
 
   /* ── Chart — Fulcra 5-color categorical palette ─────────── */
-  --chart-1: #14161F;   /* Ink-900 */
-  --chart-2: #3552E0;   /* Indigo-500 */
-  --chart-3: #B08D3E;   /* Brass-500 */
-  --chart-4: #6B6E7A;   /* Ink-500 */
-  --chart-5: #A8AAB2;   /* Ink-300 */
+  --chart-1: #14161f; /* Ink-900 */
+  --chart-2: #3552e0; /* Indigo-500 */
+  --chart-3: #b08d3e; /* Brass-500 */
+  --chart-4: #6b6e7a; /* Ink-500 */
+  --chart-5: #a8aab2; /* Ink-300 */
 
   /* ── Sidebar ─────────────────────────────────────────────── */
-  --sidebar:                    #FFFFFF;
-  --sidebar-foreground:         #14161F;
-  --sidebar-primary:            #3552E0;   /* Indigo — active indicator */
-  --sidebar-primary-foreground: #3552E0;
-  --sidebar-accent:             #EFF2FD;   /* Indigo-50 — hover */
-  --sidebar-accent-foreground:  #14161F;
-  --sidebar-border:             #DBDCD5;
-  --sidebar-ring:               #3552E0;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #14161f;
+  --sidebar-primary: #3552e0; /* Indigo — active indicator */
+  --sidebar-primary-foreground: #3552e0;
+  --sidebar-accent: #eff2fd; /* Indigo-50 — hover */
+  --sidebar-accent-foreground: #14161f;
+  --sidebar-border: #dbdcd5;
+  --sidebar-ring: #3552e0;
 
   /* ── Fulcra semantic extensions ─────────────────────────── */
-  --success:              #1C8C5E;   /* Success-500 */
-  --success-foreground:   #FFFFFF;
-  --success-subtle:       #DCF0E5;   /* Success-100 */
-  --success-text:         #146B47;   /* Success-700 (text on light bg) */
+  --success: #1c8c5e; /* Success-500 */
+  --success-foreground: #ffffff;
+  --success-subtle: #dcf0e5; /* Success-100 */
+  --success-text: #146b47; /* Success-700 (text on light bg) */
 
-  --warning:              #D97706;   /* Warning-500 */
-  --warning-foreground:   #FFFFFF;
-  --warning-subtle:       #FBE7CB;   /* Warning-100 */
-  --warning-text:         #A85B04;   /* Warning-700 */
+  --warning: #d97706; /* Warning-500 */
+  --warning-foreground: #ffffff;
+  --warning-subtle: #fbe7cb; /* Warning-100 */
+  --warning-text: #a85b04; /* Warning-700 */
 
-  --danger:               #C4432E;   /* Danger-500 (= --destructive) */
-  --danger-foreground:    #FFFFFF;
-  --danger-subtle:        #F6DAD4;   /* Danger-100 */
-  --danger-text:          #952F1F;   /* Danger-700 */
+  --danger: #c4432e; /* Danger-500 (= --destructive) */
+  --danger-foreground: #ffffff;
+  --danger-subtle: #f6dad4; /* Danger-100 */
+  --danger-text: #952f1f; /* Danger-700 */
 
-  --info:                 #2A8FBF;   /* Info-500 */
-  --info-foreground:      #FFFFFF;
-  --info-subtle:          #DAEEF5;   /* Info-100 */
+  --info: #2a8fbf; /* Info-500 */
+  --info-foreground: #ffffff;
+  --info-subtle: #daeef5; /* Info-100 */
 
-  --candidate:            #B08D3E;   /* Brass-500 */
-  --candidate-foreground: #FFFFFF;
-  --candidate-subtle:     #F4EEDD;   /* Brass-50 */
-  --candidate-text:       #8C6E2E;   /* Brass-700 */
+  --candidate: #b08d3e; /* Brass-500 */
+  --candidate-foreground: #ffffff;
+  --candidate-subtle: #f4eedd; /* Brass-50 */
+  --candidate-text: #8c6e2e; /* Brass-700 */
 
-  --role:                 #3552E0;   /* = primary/Indigo */
-  --role-foreground:      #FFFFFF;
-  --role-subtle:          #EFF2FD;   /* Indigo-50 */
+  --role: #3552e0; /* = primary/Indigo */
+  --role-foreground: #ffffff;
+  --role-subtle: #eff2fd; /* Indigo-50 */
 
   /* ── Functional ─────────────────────────────────────────── */
-  --overlay:              rgba(20, 22, 31, 0.48);
-  --skeleton-base:        #E7E8E2;   /* Ink-100 */
-  --skeleton-shimmer:     #F1F2EE;   /* Paper */
+  --overlay: rgba(20, 22, 31, 0.48);
+  --skeleton-base: #e7e8e2; /* Ink-100 */
+  --skeleton-shimmer: #f1f2ee; /* Paper */
 
   /* ── Motion ─────────────────────────────────────────────── */
-  --motion-micro:    120ms;
+  --motion-micro: 120ms;
   --motion-standard: 200ms;
-  --motion-complex:  320ms;
-  --ease-enter:      cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-exit:       cubic-bezier(0.4, 0, 1, 1);
+  --motion-complex: 320ms;
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -184,80 +184,80 @@
    Fulcra dark mode tokens to be defined in a future iteration.
    ───────────────────────────────────────────────────────────── */
 .dark {
-  --background:           #14161F;
-  --foreground:           #F1F2EE;
+  --background: #14161f;
+  --foreground: #f1f2ee;
 
-  --card:                 #1E2029;
-  --card-foreground:      #F1F2EE;
+  --card: #1e2029;
+  --card-foreground: #f1f2ee;
 
-  --popover:              #1E2029;
-  --popover-foreground:   #F1F2EE;
+  --popover: #1e2029;
+  --popover-foreground: #f1f2ee;
 
-  --primary:              #6B84F0;
-  --primary-foreground:   #14161F;
+  --primary: #6b84f0;
+  --primary-foreground: #14161f;
 
-  --secondary:            #2A2D3A;
-  --secondary-foreground: #F1F2EE;
+  --secondary: #2a2d3a;
+  --secondary-foreground: #f1f2ee;
 
-  --muted:                #2A2D3A;
-  --muted-foreground:     #A8AAB2;
+  --muted: #2a2d3a;
+  --muted-foreground: #a8aab2;
 
-  --accent:               #2A3060;
-  --accent-foreground:    #6B84F0;
+  --accent: #2a3060;
+  --accent-foreground: #6b84f0;
 
-  --destructive:          #E0614A;
-  --destructive-foreground: #FFFFFF;
+  --destructive: #e0614a;
+  --destructive-foreground: #ffffff;
 
-  --border:               rgba(255, 255, 255, 0.1);
-  --input:                rgba(255, 255, 255, 0.12);
-  --ring:                 #6B84F0;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: #6b84f0;
 
-  --chart-1: #F1F2EE;
-  --chart-2: #6B84F0;
-  --chart-3: #D4AE6A;
-  --chart-4: #A8AAB2;
-  --chart-5: #6B6E7A;
+  --chart-1: #f1f2ee;
+  --chart-2: #6b84f0;
+  --chart-3: #d4ae6a;
+  --chart-4: #a8aab2;
+  --chart-5: #6b6e7a;
 
-  --sidebar:                    #1E2029;
-  --sidebar-foreground:         #F1F2EE;
-  --sidebar-primary:            #6B84F0;
-  --sidebar-primary-foreground: #6B84F0;
-  --sidebar-accent:             #2A3060;
-  --sidebar-accent-foreground:  #F1F2EE;
-  --sidebar-border:             rgba(255, 255, 255, 0.1);
-  --sidebar-ring:               #6B84F0;
+  --sidebar: #1e2029;
+  --sidebar-foreground: #f1f2ee;
+  --sidebar-primary: #6b84f0;
+  --sidebar-primary-foreground: #6b84f0;
+  --sidebar-accent: #2a3060;
+  --sidebar-accent-foreground: #f1f2ee;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #6b84f0;
 
-  --success:              #2AAD76;
-  --success-foreground:   #FFFFFF;
-  --success-subtle:       #1C3D30;
-  --success-text:         #5CC49A;
+  --success: #2aad76;
+  --success-foreground: #ffffff;
+  --success-subtle: #1c3d30;
+  --success-text: #5cc49a;
 
-  --warning:              #F59E0B;
-  --warning-foreground:   #14161F;
-  --warning-subtle:       #3D2E10;
-  --warning-text:         #FBB949;
+  --warning: #f59e0b;
+  --warning-foreground: #14161f;
+  --warning-subtle: #3d2e10;
+  --warning-text: #fbb949;
 
-  --danger:               #E0614A;
-  --danger-foreground:    #FFFFFF;
-  --danger-subtle:        #3D1A14;
-  --danger-text:          #F08070;
+  --danger: #e0614a;
+  --danger-foreground: #ffffff;
+  --danger-subtle: #3d1a14;
+  --danger-text: #f08070;
 
-  --info:                 #4BAFDA;
-  --info-foreground:      #14161F;
-  --info-subtle:          #1A3040;
+  --info: #4bafda;
+  --info-foreground: #14161f;
+  --info-subtle: #1a3040;
 
-  --candidate:            #C9A455;
-  --candidate-foreground: #14161F;
-  --candidate-subtle:     #3D2E14;
-  --candidate-text:       #D4AE6A;
+  --candidate: #c9a455;
+  --candidate-foreground: #14161f;
+  --candidate-subtle: #3d2e14;
+  --candidate-text: #d4ae6a;
 
-  --role:                 #6B84F0;
-  --role-foreground:      #14161F;
-  --role-subtle:          #2A3060;
+  --role: #6b84f0;
+  --role-foreground: #14161f;
+  --role-subtle: #2a3060;
 
-  --overlay:           rgba(0, 0, 0, 0.64);
-  --skeleton-base:     #2A2D3A;
-  --skeleton-shimmer:  #3A3D4A;
+  --overlay: rgba(0, 0, 0, 0.64);
+  --skeleton-base: #2a2d3a;
+  --skeleton-shimmer: #3a3d4a;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -281,7 +281,12 @@
   }
 
   /* Headings use Space Grotesk */
-  h1, h2, h3, h4, h5, h6,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
   [data-slot="dialog-title"],
   [data-slot="card-title"],
   .font-heading {
@@ -298,7 +303,10 @@
   }
 
   /* Mono font for technical/data values */
-  code, kbd, samp, pre,
+  code,
+  kbd,
+  samp,
+  pre,
   [data-slot="kbd"] {
     font-family: var(--font-mono), "IBM Plex Mono", monospace;
   }
