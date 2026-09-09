@@ -1,0 +1,30 @@
+{
+  "name": "trigger",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "trigger.dev dev",
+    "build": "tsup src/index.ts --format esm --out-dir dist",
+    "lint": "eslint",
+    "format": "prettier --write \"**/*.{ts,json,md}\"",
+    "check-types": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@trigger.dev/sdk": "^4.5.16",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@trigger.dev/build": "^4.5.16",
+    "@types/node": "^20.19.43",
+    "eslint": "^9.39.5",
+    "trigger.dev": "^4.5.16",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.70.0",
+    "vitest": "^5.0.0"
+  }
+}
