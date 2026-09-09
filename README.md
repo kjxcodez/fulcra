@@ -37,7 +37,7 @@ fulcra/
 ├── pnpm-workspace.yaml
 ├── turbo.json
 └── README.md
-````
+```
 
 Additional applications and domain packages will be introduced as the architecture develops. We intentionally avoid creating packages before a real reuse or architectural boundary exists.
 
@@ -45,24 +45,31 @@ Additional applications and domain packages will be introduced as the architectu
 
 The current foundation includes:
 
-* [TypeScript](https://www.typescriptlang.org/)
-* [Next.js](https://nextjs.org/)
-* [React](https://react.dev/)
-* [shadcn/ui](https://ui.shadcn.com/)
-* [Turborepo](https://turborepo.dev/)
-* [pnpm](https://pnpm.io/)
-* [Prettier](https://prettier.io/)
-* [ESLint](https://eslint.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Next.js](https://nextjs.org/)
+- [React](https://react.dev/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Turborepo](https://turborepo.dev/)
+- [pnpm](https://pnpm.io/)
+- [Prettier](https://prettier.io/)
+- [ESLint](https://eslint.org/)
 
 The broader architecture is designed around managed/serverless infrastructure, with technologies such as PostgreSQL, Upstash, Trigger.dev, Playwright, managed browser infrastructure, AI providers, and MCP being introduced where they provide a clear architectural benefit.
 
-## Development
+## Prerequisites
+
+- **Node.js**: `>=24.0.0`
+- **pnpm**: `11.25.0`
+
+## Development Workflow
 
 Install dependencies from the repository root:
 
 ```bash
 pnpm install
 ```
+
+> Note: Installing dependencies automatically initializes the Husky git hooks via the `prepare` script.
 
 Start the development environment:
 
@@ -90,7 +97,7 @@ Build only the web application:
 pnpm --filter web build
 ```
 
-## Lint
+## Quality & Validation
 
 Run linting across the workspace:
 
@@ -98,21 +105,31 @@ Run linting across the workspace:
 pnpm lint
 ```
 
-## Type Checking
-
-Run TypeScript checks across the workspace:
+Run TypeScript type checks across the workspace:
 
 ```bash
-pnpm typecheck
+pnpm check-types
 ```
 
-## Formatting
-
-Format the repository:
+Format the repository with Prettier:
 
 ```bash
 pnpm format
 ```
+
+Verify formatting without modifying files:
+
+```bash
+pnpm format:check
+```
+
+## Git Hooks & Commit Convention
+
+- **Pre-commit**: Automatically runs `lint-staged` on staged files (`eslint --fix` for TS/TSX, `prettier --write` for all).
+- **Commit Messages**: Enforces [Conventional Commits](https://www.conventionalcommits.org/) (`@commitlint/config-conventional`) via `.husky/commit-msg`. Example: `feat(web): add candidate card primitive`.
+- **CI Pipeline**: GitHub Actions (`.github/workflows/ci.yml`) runs formatting, linting, type checks, and production builds on push and pull requests to `main`.
+
+For detailed contribution guidelines, see [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
 ## Turborepo
 
@@ -130,22 +147,22 @@ For more information, see the [Turborepo documentation](https://turborepo.dev/do
 
 The `docs/` directory contains the project's source-of-truth documentation, including:
 
-* Product requirements
-* Design system
-* Information architecture
-* User flows
-* System architecture
-* Domain architecture
-* Data model
-* ATS architecture
-* AI architecture
-* Connector architecture
-* Workflow architecture
-* MCP architecture
-* Security
-* Observability
-* QA and testing
-* Delivery roadmap
+- Product requirements
+- Design system
+- Information architecture
+- User flows
+- System architecture
+- Domain architecture
+- Data model
+- ATS architecture
+- AI architecture
+- Connector architecture
+- Workflow architecture
+- MCP architecture
+- Security
+- Observability
+- QA and testing
+- Delivery roadmap
 
 Architectural and design decisions should be reflected in the documentation before they become implementation conventions.
 

@@ -1,4 +1,3 @@
-
 # Fulcra Web
 
 The main web application for Fulcra.
@@ -21,7 +20,7 @@ Run the web application from the repository root:
 
 ```bash
 pnpm --filter web dev
-````
+```
 
 Or from this directory:
 
@@ -55,14 +54,14 @@ The Fulcra design system is defined in the repository documentation.
 
 The implementation should preserve:
 
-* Fulcra semantic color tokens
-* Space Grotesk for display typography
-* IBM Plex Sans for interface and body text
-* IBM Plex Mono for technical/data values
-* restrained radius and elevation
-* evidence-oriented information hierarchy
-* accessibility requirements
-* Fulcra motion and interaction rules
+- Fulcra semantic color tokens
+- Space Grotesk for display typography
+- IBM Plex Sans for interface and body text
+- IBM Plex Mono for technical/data values
+- restrained radius and elevation
+- evidence-oriented information hierarchy
+- accessibility requirements
+- Fulcra motion and interaction rules
 
 Do not introduce independent visual conventions at the component level without updating the design system.
 
@@ -88,32 +87,32 @@ apps/web/
 
 Low-level reusable UI primitives such as:
 
-* Button
-* Input
-* Select
-* Dialog
-* Dropdown
-* Tabs
-* Tooltip
-* Table
-* Command
-* Sheet
+- Button
+- Input
+- Select
+- Dialog
+- Dropdown
+- Tabs
+- Tooltip
+- Table
+- Command
+- Sheet
 
 ### `components/fulcra`
 
 Higher-level components specific to Fulcra, such as:
 
-* Match Score
-* ATS Score
-* Match Breakdown
-* Job Card
-* Candidate Card
-* Resume Preview
-* Resume Diff
-* Application Timeline
-* Pipeline
-* Evidence
-* AI Actions
+- Match Score
+- ATS Score
+- Match Breakdown
+- Job Card
+- Candidate Card
+- Resume Preview
+- Resume Diff
+- Application Timeline
+- Pipeline
+- Evidence
+- AI Actions
 
 ## Architecture
 
@@ -135,13 +134,13 @@ Database / Background workflows / External integrations
 
 The web app should remain focused on:
 
-* Rendering UI
-* User interaction
-* Form handling
-* Lightweight request/response operations
-* Authentication/session integration
-* Triggering background workflows
-* Displaying workflow results and status
+- Rendering UI
+- User interaction
+- Form handling
+- Lightweight request/response operations
+- Authentication/session integration
+- Triggering background workflows
+- Displaying workflow results and status
 
 ## Build
 
