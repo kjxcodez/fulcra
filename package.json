@@ -9,6 +9,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,md,json,css,yaml,yml}\"",
     "check-types": "turbo run check-types",
     "typecheck": "turbo run check-types",
+    "test": "turbo run test",
     "prepare": "husky"
   },
   "devDependencies": {
