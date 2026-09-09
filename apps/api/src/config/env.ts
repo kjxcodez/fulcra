@@ -10,6 +10,7 @@ const envSchema = z.object({
     .default("local"),
   WEB_ORIGIN: z.string().default("http://localhost:3000"),
   API_VERSION: z.string().default("0.1.0"),
+  DATABASE_URL: z.string().url().optional(),
 })
 
 export type Env = z.infer<typeof envSchema>
