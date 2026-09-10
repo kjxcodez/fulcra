@@ -34,6 +34,11 @@ const envSchema = z.object({
   TRIGGER_PROJECT_ID: z.string().default("fulcra-trigger-local"),
   TRIGGER_SECRET_KEY: z.string().optional(),
   DATABASE_URL: z.string().url().optional(),
+  BROWSER_PROVIDER: z.enum(["remote", "local", "mock"]).default("mock"),
+  BROWSER_PROVIDER_URL: z.string().optional(),
+  BROWSER_PROVIDER_TOKEN: z.string().optional(),
+  BROWSER_NAVIGATION_TIMEOUT_MS: z.coerce.number().default(30000),
+  BROWSER_ACTION_TIMEOUT_MS: z.coerce.number().default(10000),
 })
 
 export type Env = z.infer<typeof envSchema>
