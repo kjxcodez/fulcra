@@ -24,6 +24,12 @@ export interface BrowserSmokeResult {
   timestamp: string
 }
 
+/**
+ * Internal infrastructure verification service.
+ *
+ * Executes a safe, read-only browser smoke test against a target URL.
+ * Strictly for internal Trigger infrastructure verification and testing.
+ */
 export class BrowserSmokeService {
   constructor(private readonly providerOverride?: BrowserProvider) {}
 

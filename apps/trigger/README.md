@@ -84,11 +84,12 @@ apps/trigger/
 ## Core Principles
 
 1. **Separation of Task and Service**: Trigger task definitions act strictly as execution adapters. Core logic resides in `src/services/` and is fully testable in isolation.
-2. **Provider-Agnostic Browser Automation**: Domain code never imports Playwright directly. All browser automation is expressed through `BrowserSession` and `BrowserProvider`.
-3. **Deterministic Lifecycle**: `withBrowserSession` guarantees browser contexts and pages are closed cleanly in `finally`, avoiding leaked processes or orphan sessions.
-4. **Native Retries**: No ad-hoc retry loops. Tasks define exponential backoff and jitter via Trigger.dev's native `retry` policy.
-5. **Idempotency by Rule**: Background work must assume duplicate executions can occur; operations must be safe to retry or specify an `idempotencyKey`.
-6. **Hermetic Testing**: Unit and task tests run under Vitest with zero dependencies on live Trigger.dev cloud credentials or external browser services.
+2. **Provider-Agnostic Browser Automation**: Domain code never imports Playwright directly. All browser automation is expressed through `BrowserSession` and `BrowserProvider`. Fulcra currently provides a generic remote browser adapter (`RemoteBrowserProvider`) capable of connecting to managed CDP/WebSocket browser infrastructure; the production provider has not yet been selected.
+3. **Internal Infrastructure Boundary**: Browser tasks such as `system.browser-smoke-test` are internal Trigger.dev verification tasks only and are NOT public API capabilities. Arbitrary browser execution is never exposed through public HTTP endpoints.
+4. **Deterministic Lifecycle**: `withBrowserSession` guarantees browser contexts and pages are closed cleanly in `finally`, avoiding leaked processes or orphan sessions.
+5. **Native Retries**: No ad-hoc retry loops. Tasks define exponential backoff and jitter via Trigger.dev's native `retry` policy.
+6. **Idempotency by Rule**: Background work must assume duplicate executions can occur; operations must be safe to retry or specify an `idempotencyKey`.
+7. **Hermetic Testing**: Unit and task tests run under Vitest with zero dependencies on live Trigger.dev cloud credentials or external browser services.
 
 ---
 

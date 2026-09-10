@@ -34,8 +34,11 @@ const envSchema = z.object({
   TRIGGER_PROJECT_ID: z.string().default("fulcra-trigger-local"),
   TRIGGER_SECRET_KEY: z.string().optional(),
   DATABASE_URL: z.string().url().optional(),
+  // Generic browser provider selection: "remote" (generic CDP/WebSocket), "local" (Chromium launch), or "mock"
   BROWSER_PROVIDER: z.enum(["remote", "local", "mock"]).default("mock"),
+  // Endpoint URL for the configured remote browser infrastructure (standard CDP/WebSocket)
   BROWSER_PROVIDER_URL: z.string().optional(),
+  // Credential/token required by the configured managed browser endpoint, when applicable
   BROWSER_PROVIDER_TOKEN: z.string().optional(),
   BROWSER_NAVIGATION_TIMEOUT_MS: z.coerce.number().default(30000),
   BROWSER_ACTION_TIMEOUT_MS: z.coerce.number().default(10000),

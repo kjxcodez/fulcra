@@ -11,7 +11,7 @@ Fulcra executes browser automation for asynchronous workflows (such as external 
 ### Core Principles
 
 1. **Provider-Agnostic Abstraction**: Application tasks and domain services interact exclusively with the `BrowserSession` and `BrowserProvider` interfaces. Playwright types (`Page`, `BrowserContext`, `Browser`) and provider-specific SDKs are strictly isolated behind the `src/infrastructure/browser/` boundary.
-2. **Managed Browser Infrastructure**: Fulcra does not operate, scale, or maintain self-hosted browser fleets, Kubernetes worker pods, or persistent VM instances. When running live automation, Fulcra connects via WebSocket / CDP to a managed browser provider (e.g., Browserless, Browserbase, Cloudflare Browser).
+2. **Managed Browser Infrastructure**: Fulcra does not operate, scale, or maintain self-hosted browser fleets, Kubernetes worker pods, or persistent VM instances. When running live automation, Fulcra connects via standard CDP / WebSocket interfaces to a managed remote browser endpoint. The concrete production vendor has not yet been selected; any compliant remote CDP/WebSocket provider can be configured.
 3. **Trigger.dev Execution Only**: Browser automation is inherently asynchronous, resource-intensive, and long-running. It is triggered only from background tasks in `apps/trigger`. Browser execution is **never** executed inside synchronous API HTTP request loops or from the frontend.
 4. **Context Isolation & Zero Leakage**: Every execution runs within a newly created, isolated browser context. Cookies, storage state, and authentication credentials are never shared across unrelated candidate or system workflows.
 
@@ -37,7 +37,10 @@ Fulcra Background Task / Service
      ┌────────┴────────┐
      ▼                 ▼
 Remote Provider     Local / Mock
-(WebSocket / CDP)   (Development / CI)
+(RemoteBrowserProvider) (Development / CI)
+     │
+     ▼
+Managed Remote CDP/WebSocket Endpoint
 ```
 
 ---
@@ -143,16 +146,26 @@ Can alter external state.
 
 ---
 
-## 8. Provider Replacement Strategy
+## 8. Internal Infrastructure Boundary & Arbitrary URL Safety
 
-To switch from one managed provider to another (e.g. from Browserless to Browserbase):
+1. **Internal Verification Only**: The `system.browser-smoke-test` task and its ability to accept an arbitrary `url` input is strictly an internal infrastructure verification capability.
+2. **Not a Public API Capability**: Browser execution is **never** exposed through public HTTP endpoints (e.g., `POST /api/v1/browser/...` routes are strictly prohibited). Arbitrary browser navigation must never be accessible through public API surfaces.
+3. **Future Domain Isolation**: Future tasks that perform real automation (e.g., job inspection or candidate workflows) will navigate only to system-curated, domain-allowlisted targets rather than accepting unconstrained user-supplied URLs.
+
+---
+
+## 9. Provider Replacement Strategy
+
+Fulcra currently provides a generic remote browser adapter (`RemoteBrowserProvider`) capable of connecting to managed CDP/WebSocket browser infrastructure. The production provider has not yet been selected.
+
+To configure or switch managed remote endpoints:
 
 1. Update `BROWSER_PROVIDER_URL` and `BROWSER_PROVIDER_TOKEN` in `.env.local`.
 2. Because the provider interface (`BrowserProvider`) is decoupled, **zero changes are required in domain services or tasks**.
 
 ---
 
-## 9. Testing Strategy
+## 10. Testing Strategy
 
 1. **Hermetic Unit Tests** (`test/browser/*.test.ts`):
    - Test session contracts, error mapping, navigation safety, and lifecycle cleanup using `MockBrowserProvider`.

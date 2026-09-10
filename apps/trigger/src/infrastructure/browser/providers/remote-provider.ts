@@ -8,6 +8,12 @@ import type {
 } from "../browser-types"
 import { taskLogger } from "../../../shared/logging"
 
+/**
+ * Generic managed remote browser adapter.
+ *
+ * Connects to a managed remote browser endpoint through a standard CDP/WebSocket interface
+ * using `chromium.connect`. The concrete production vendor has not yet been selected.
+ */
 export class RemoteBrowserProvider implements BrowserProvider {
   public readonly name = "remote"
   private browserInstance: Browser | null = null

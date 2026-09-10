@@ -7,6 +7,14 @@ import {
 } from "../../services/system/browser-smoke.service"
 import { taskLogger } from "../../shared/logging"
 
+/**
+ * Internal Trigger.dev infrastructure verification task.
+ *
+ * ARCHITECTURAL BOUNDARY:
+ * This task is an internal Trigger.dev infrastructure task and is NOT a public API capability.
+ * Arbitrary URL navigation is an INTERNAL capability only for infrastructure smoke-testing.
+ * It must never be exposed through public HTTP endpoints (no POST /api/v1/browser/... routes).
+ */
 export const browserSmokeTask = task({
   id: "system.browser-smoke-test",
   retry: {
