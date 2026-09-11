@@ -114,4 +114,92 @@ export class AppError extends Error {
       message,
     })
   }
+
+  static candidateNotFound(message = "Candidate profile not found"): AppError {
+    return new AppError({
+      code: ERROR_CODES.CANDIDATE_NOT_FOUND,
+      status: 404,
+      message,
+    })
+  }
+
+  static candidateAlreadyExists(
+    message = "Candidate profile already exists for this user"
+  ): AppError {
+    return new AppError({
+      code: ERROR_CODES.CANDIDATE_ALREADY_EXISTS,
+      status: 409,
+      message,
+    })
+  }
+
+  static candidateAccessDenied(
+    message = "Access denied to candidate resource"
+  ): AppError {
+    return new AppError({
+      code: ERROR_CODES.CANDIDATE_ACCESS_DENIED,
+      status: 403,
+      message,
+    })
+  }
+
+  static experienceNotFound(
+    message = "Candidate experience record not found"
+  ): AppError {
+    return new AppError({
+      code: ERROR_CODES.EXPERIENCE_NOT_FOUND,
+      status: 404,
+      message,
+    })
+  }
+
+  static educationNotFound(
+    message = "Candidate education record not found"
+  ): AppError {
+    return new AppError({
+      code: ERROR_CODES.EDUCATION_NOT_FOUND,
+      status: 404,
+      message,
+    })
+  }
+
+  static skillAlreadyExists(
+    message = "Skill already exists for this candidate"
+  ): AppError {
+    return new AppError({
+      code: ERROR_CODES.SKILL_ALREADY_EXISTS,
+      status: 409,
+      message,
+    })
+  }
+
+  static skillNotFound(message = "Candidate skill record not found"): AppError {
+    return new AppError({
+      code: ERROR_CODES.SKILL_NOT_FOUND,
+      status: 404,
+      message,
+    })
+  }
+
+  static preferencesNotFound(
+    message = "Candidate preferences not found"
+  ): AppError {
+    return new AppError({
+      code: ERROR_CODES.PREFERENCES_NOT_FOUND,
+      status: 404,
+      message,
+    })
+  }
+
+  static invalidCandidateState(
+    message = "Invalid candidate state",
+    details?: unknown
+  ): AppError {
+    return new AppError({
+      code: ERROR_CODES.INVALID_CANDIDATE_STATE,
+      status: 400,
+      message,
+      details,
+    })
+  }
 }

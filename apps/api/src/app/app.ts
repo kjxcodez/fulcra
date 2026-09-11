@@ -3,6 +3,7 @@ import {
   cors,
   errorHandler,
   notFound,
+  principal,
   requestId,
   requestLogger,
 } from "../middleware"
@@ -22,8 +23,10 @@ export function createApp(): Hono<AppEnv> {
   // 3. Centralized CORS
   app.use("*", cors())
 
+  // 4. Principal / Authentication Boundary
+  app.use("*", principal())
+
   // Extension Point: Future Security Headers Middleware
-  // Extension Point: Future Authentication Middleware
   // Extension Point: Future Rate Limiting Middleware
 
   // Mount API router (/api/v1/...)
