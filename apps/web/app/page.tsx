@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -60,11 +61,18 @@ export default function FulcraShowcasePage() {
               v1.0 Primitives
             </Badge>
           </div>
-          <div className="flex items-center gap-2">
-            <Kbd>⌘K</Kbd>
-            <span className="text-xs text-muted-foreground">
-              Command Palette
-            </span>
+          <div className="flex items-center gap-3">
+            <Link href="/candidate">
+              <Button size="sm" variant="default" className="text-xs">
+                Candidate Profile →
+              </Button>
+            </Link>
+            <div className="hidden items-center gap-2 sm:flex">
+              <Kbd>⌘K</Kbd>
+              <span className="text-xs text-muted-foreground">
+                Command Palette
+              </span>
+            </div>
           </div>
         </div>
       </header>
