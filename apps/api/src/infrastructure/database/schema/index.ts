@@ -1,2 +1,6 @@
 export * from "./users"
 export * from "./candidate-profiles"
+export * from "./candidate-experiences"
+export * from "./candidate-education"
+export * from "./candidate-skills"
+export * from "./candidate-preferences"
