@@ -57,6 +57,14 @@ apps/api/
 │   │   └── index.ts
 │   │
 │   ├── features/             # Feature-based domain modules
+│   │   ├── candidates/       # Candidate domain (profile, experiences, education, skills, preferences)
+│   │   │   ├── candidate.route.ts
+│   │   │   ├── candidate.schema.ts
+│   │   │   ├── candidate.service.ts
+│   │   │   ├── candidate.repository.ts
+│   │   │   ├── candidate.types.ts
+│   │   │   └── index.ts
+│   │   │
 │   │   ├── health/           # Health / liveness check
 │   │   │   ├── health.route.ts
 │   │   │   ├── health.schema.ts
@@ -70,7 +78,9 @@ apps/api/
 │   └── index.ts              # Local / container runtime entrypoint (Node server)
 │
 ├── test/
-│   └── api.test.ts           # In-memory Vitest integration test suite
+│   ├── api.test.ts           # In-memory Vitest integration test suite
+│   ├── database/             # PostgreSQL integration tests
+│   └── features/             # Feature-level unit & integration tests
 ├── package.json
 ├── tsconfig.json
 ├── eslint.config.mjs
@@ -83,10 +93,28 @@ apps/api/
 
 All public endpoints are versioned under `/api/v1/`:
 
-| Method | Path              | Description                                                                                    |
-| ------ | ----------------- | ---------------------------------------------------------------------------------------------- |
-| `GET`  | `/api/v1/health`  | Liveness check (deterministic, no external dependencies). Supports optional `?echo=...` query. |
-| `GET`  | `/api/v1/version` | Returns API version and environment metadata.                                                  |
+| Method   | Path                                | Description                                                  |
+| -------- | ----------------------------------- | ------------------------------------------------------------ |
+| `GET`    | `/api/v1/health`                    | Liveness check. Supports optional `?echo=...` query.         |
+| `GET`    | `/api/v1/version`                   | Returns API version and environment metadata.                |
+| `GET`    | `/api/v1/candidate`                 | Returns current user's complete candidate aggregate.         |
+| `POST`   | `/api/v1/candidate`                 | Creates candidate profile for authenticated principal.       |
+| `PATCH`  | `/api/v1/candidate`                 | Updates candidate profile details.                           |
+| `DELETE` | `/api/v1/candidate`                 | Deletes candidate profile and all associated child entities. |
+| `GET`    | `/api/v1/candidate/experiences`     | Lists candidate experiences.                                 |
+| `POST`   | `/api/v1/candidate/experiences`     | Adds experience record.                                      |
+| `PATCH`  | `/api/v1/candidate/experiences/:id` | Updates experience record.                                   |
+| `DELETE` | `/api/v1/candidate/experiences/:id` | Deletes experience record.                                   |
+| `GET`    | `/api/v1/candidate/education`       | Lists candidate education records.                           |
+| `POST`   | `/api/v1/candidate/education`       | Adds education record.                                       |
+| `PATCH`  | `/api/v1/candidate/education/:id`   | Updates education record.                                    |
+| `DELETE` | `/api/v1/candidate/education/:id`   | Deletes education record.                                    |
+| `GET`    | `/api/v1/candidate/skills`          | Lists candidate skills.                                      |
+| `POST`   | `/api/v1/candidate/skills`          | Adds normalized skill (case-insensitive deduplication).      |
+| `PATCH`  | `/api/v1/candidate/skills/:id`      | Updates skill record.                                        |
+| `DELETE` | `/api/v1/candidate/skills/:id`      | Deletes skill record.                                        |
+| `GET`    | `/api/v1/candidate/preferences`     | Returns candidate career preferences.                        |
+| `PATCH`  | `/api/v1/candidate/preferences`     | Upserts candidate career preferences.                        |
 
 ---
 
