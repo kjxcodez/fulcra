@@ -1,0 +1,129 @@
+"use client"
+
+import * as React from "react"
+
+const LOOP_STEPS = [
+  {
+    idx: "01",
+    name: "Discover",
+    desc: "Pulled from boards, ATS-hosted career pages, and company sites — deduplicated into one listing.",
+  },
+  {
+    idx: "02",
+    name: "Understand",
+    desc: "Requirements, seniority, and must-haves extracted from the raw posting, not just keywords.",
+  },
+  {
+    idx: "03",
+    name: "Match",
+    desc: "Weighed against your profile on skills, experience, location, and comp — with a reason for every number.",
+  },
+  {
+    idx: "04",
+    name: "Optimize",
+    desc: "Resume and ATS gaps surfaced, with fixes grounded in evidence you actually have.",
+  },
+  {
+    idx: "05",
+    name: "Apply",
+    desc: "Submit yourself, or hand it to automation under rules you set.",
+  },
+  {
+    idx: "06",
+    name: "Track",
+    desc: "Every resume, answer, and reply attached to the application it belongs to.",
+  },
+]
+
+export function SixStepLoop() {
+  const [activeStep, setActiveStep] = React.useState<number | null>(null)
+  const [scrollProgress, setScrollProgress] = React.useState(16)
+  const sectionRef = React.useRef<HTMLElement>(null)
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return
+      const rect = sectionRef.current.getBoundingClientRect()
+      const vh = window.innerHeight
+      const total = rect.height + vh
+      const scrolled = vh - rect.top
+      const fraction = Math.min(Math.max(scrolled / total, 0.16), 1)
+      setScrollProgress(fraction * 100)
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  return (
+    <section
+      id="loop"
+      ref={sectionRef}
+      className="border-t border-border py-20 sm:py-28"
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="mb-12 max-w-xl">
+          <span className="mb-3 block font-mono text-xs font-medium tracking-wider text-primary uppercase">
+            the loop
+          </span>
+          <h2 className="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+            Every job goes through the same six steps — for you and for it.
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            Discovery isn&apos;t the finish line. Fulcra keeps working after the
+            job is found: understanding it, weighing it against you, tightening
+            your application, and tracking what happens next.
+          </p>
+        </div>
+
+        {/* Progress Rail Track */}
+        <div className="relative mb-0 h-0.5 w-full overflow-hidden bg-border">
+          <div
+            className="h-full bg-primary transition-[width] duration-150 ease-out"
+            style={{
+              width:
+                activeStep !== null
+                  ? `${((activeStep + 1) / LOOP_STEPS.length) * 100}%`
+                  : `${scrollProgress}%`,
+            }}
+          />
+        </div>
+
+        {/* Six Steps Grid / Rail */}
+        <div className="grid grid-cols-1 divide-y divide-border border-b border-border sm:grid-cols-2 sm:divide-x sm:divide-y-0 md:grid-cols-3 lg:grid-cols-6">
+          {LOOP_STEPS.map((step, i) => {
+            const isHovered = activeStep === i
+            return (
+              <div
+                key={step.idx}
+                onMouseEnter={() => setActiveStep(i)}
+                onMouseLeave={() => setActiveStep(null)}
+                className={`group relative cursor-pointer p-6 transition-all duration-200 ${
+                  isHovered
+                    ? "-translate-y-1.5 bg-card shadow-xs"
+                    : "hover:bg-card/50"
+                }`}
+              >
+                <div
+                  className={`font-mono text-xs font-semibold transition-colors duration-200 ${
+                    isHovered ? "text-primary" : "text-muted-foreground"
+                  }`}
+                >
+                  {step.idx}
+                </div>
+                <div className="mt-3 font-heading text-base font-semibold text-foreground">
+                  {step.name}
+                </div>
+                <div className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                  {step.desc}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
