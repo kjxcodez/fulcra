@@ -1,7 +1,9 @@
 "use client"
 
 import * as React from "react"
+import { Check, AlertCircle } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
+import { Tilt3D } from "@/components/fulcra/shared/tilt-3d"
 
 const BREAKDOWN_ROWS = [
   { label: "Skills", value: "94%", isCandidate: true },
@@ -18,7 +20,7 @@ export function MatchAnalysisSection() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
           {/* Copy Column */}
           <div className="space-y-5 lg:col-span-5">
-            <span className="block font-mono text-xs tracking-wider text-muted-foreground uppercase">
+            <span className="block font-mono text-xs tracking-wider text-primary uppercase">
               match analysis
             </span>
             <h3 className="font-heading text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
@@ -30,19 +32,21 @@ export function MatchAnalysisSection() {
               behind it.
             </p>
 
-            {/* Badges */}
+            {/* Badges without emojis, with crisp technical icons */}
             <div className="flex flex-wrap gap-2 pt-1">
               <Badge
                 variant="outline"
-                className="text-success-text border-success/30 bg-success-subtle text-xs"
+                className="text-success-text inline-flex items-center gap-1.5 border-success/30 bg-success-subtle px-2.5 py-1 text-xs"
               >
-                Strong: React, TypeScript, PostgreSQL
+                <Check className="h-3.5 w-3.5 text-success" />
+                <span>Strong: React, TypeScript, PostgreSQL</span>
               </Badge>
               <Badge
                 variant="outline"
-                className="text-warning-text border-warning/30 bg-warning-subtle text-xs"
+                className="text-warning-text inline-flex items-center gap-1.5 border-warning/30 bg-warning-subtle px-2.5 py-1 text-xs"
               >
-                Missing: Kubernetes
+                <AlertCircle className="h-3.5 w-3.5 text-warning" />
+                <span>Missing: Kubernetes</span>
               </Badge>
             </div>
 
@@ -52,56 +56,60 @@ export function MatchAnalysisSection() {
             </div>
           </div>
 
-          {/* Panel Column */}
+          {/* Panel Column with 3D Tilt */}
           <div className="lg:col-span-7">
-            <div className="rounded-xl border border-border bg-card p-6 shadow-xs transition-shadow duration-300 hover:shadow-md sm:p-8">
-              <div className="mb-4 flex items-center justify-between border-b border-border/80 pb-4">
-                <div className="font-heading text-base font-semibold text-foreground">
-                  Match breakdown
-                </div>
-                <span className="font-mono text-xs text-muted-foreground">
-                  Role: Senior Backend Engineer
-                </span>
-              </div>
-
-              <div className="space-y-4">
-                {BREAKDOWN_ROWS.map((row) => (
-                  <div
-                    key={row.label}
-                    className="flex items-center justify-between gap-4 text-xs font-medium"
-                  >
-                    <span className="w-28 text-foreground">{row.label}</span>
-                    <div className="flex flex-1 items-center gap-3">
-                      <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-muted">
-                        <div
-                          className={`h-full transition-all duration-700 ${
-                            row.isCandidate ? "bg-candidate" : "bg-role"
-                          }`}
-                          style={{ width: row.value }}
-                        />
-                      </div>
-                      <span className="w-10 text-right font-mono text-xs text-muted-foreground">
-                        {row.value}
-                      </span>
-                    </div>
+            <Tilt3D maxAngle={5} scale={1.01}>
+              <div className="rounded-xl border border-border bg-card p-6 shadow-sm transition-shadow duration-300 hover:shadow-lg sm:p-8">
+                <div className="mb-4 flex items-center justify-between border-b border-border/80 pb-4">
+                  <div className="font-heading text-base font-semibold text-foreground">
+                    Match breakdown
                   </div>
-                ))}
-              </div>
-
-              <div className="mt-6 flex items-center justify-between border-t border-border/80 pt-4 font-mono text-[11px] text-muted-foreground">
-                <div className="flex items-center gap-3">
-                  <span className="flex items-center gap-1.5">
-                    <span className="inline-block h-2 w-2 rounded-full bg-candidate" />
-                    Candidate evidence
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <span className="inline-block h-2 w-2 rounded-full bg-role" />
-                    Role requirement
+                  <span className="font-mono text-xs text-muted-foreground">
+                    Role: Senior Backend Engineer
                   </span>
                 </div>
-                <span>94% aggregate</span>
+
+                <div className="space-y-4">
+                  {BREAKDOWN_ROWS.map((row) => (
+                    <div
+                      key={row.label}
+                      className="flex items-center justify-between gap-4 text-xs font-medium"
+                    >
+                      <span className="w-28 text-foreground">{row.label}</span>
+                      <div className="flex flex-1 items-center gap-3">
+                        <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-muted">
+                          <div
+                            className={`h-full transition-all duration-700 ${
+                              row.isCandidate ? "bg-candidate" : "bg-role"
+                            }`}
+                            style={{ width: row.value }}
+                          />
+                        </div>
+                        <span className="w-10 text-right font-mono text-xs text-muted-foreground">
+                          {row.value}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 flex items-center justify-between border-t border-border/80 pt-4 font-mono text-[11px] text-muted-foreground">
+                  <div className="flex items-center gap-3">
+                    <span className="flex items-center gap-1.5">
+                      <span className="inline-block h-2 w-2 rounded-full bg-candidate" />
+                      Candidate evidence
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <span className="inline-block h-2 w-2 rounded-full bg-role" />
+                      Role requirement
+                    </span>
+                  </div>
+                  <span className="font-semibold text-foreground">
+                    94% aggregate
+                  </span>
+                </div>
               </div>
-            </div>
+            </Tilt3D>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { motion } from "motion/react"
 
 const LOOP_STEPS = [
   {
@@ -80,14 +81,15 @@ export function SixStepLoop() {
 
         {/* Progress Rail Track */}
         <div className="relative mb-0 h-0.5 w-full overflow-hidden bg-border">
-          <div
-            className="h-full bg-primary transition-[width] duration-150 ease-out"
-            style={{
+          <motion.div
+            className="h-full bg-primary"
+            animate={{
               width:
                 activeStep !== null
                   ? `${((activeStep + 1) / LOOP_STEPS.length) * 100}%`
                   : `${scrollProgress}%`,
             }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
           />
         </div>
 
@@ -96,19 +98,23 @@ export function SixStepLoop() {
           {LOOP_STEPS.map((step, i) => {
             const isHovered = activeStep === i
             return (
-              <div
+              <motion.div
                 key={step.idx}
                 onMouseEnter={() => setActiveStep(i)}
                 onMouseLeave={() => setActiveStep(null)}
-                className={`group relative cursor-pointer p-6 transition-all duration-200 ${
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+                className={`group relative cursor-pointer p-6 transition-colors duration-200 ${
                   isHovered
-                    ? "-translate-y-1.5 bg-card shadow-xs"
-                    : "hover:bg-card/50"
+                    ? "border-b-2 border-primary bg-card shadow-sm"
+                    : "hover:bg-card/40"
                 }`}
               >
                 <div
                   className={`font-mono text-xs font-semibold transition-colors duration-200 ${
-                    isHovered ? "text-primary" : "text-muted-foreground"
+                    isHovered
+                      ? "font-bold text-primary"
+                      : "text-muted-foreground"
                   }`}
                 >
                   {step.idx}
@@ -119,7 +125,7 @@ export function SixStepLoop() {
                 <div className="mt-2 text-xs leading-relaxed text-muted-foreground">
                   {step.desc}
                 </div>
-              </div>
+              </motion.div>
             )
           })}
         </div>

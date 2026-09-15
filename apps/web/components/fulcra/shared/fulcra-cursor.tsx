@@ -4,11 +4,11 @@ import * as React from "react"
 
 export function FulcraCursor() {
   const [mounted, setMounted] = React.useState(false)
+  const [isHovered, setIsHovered] = React.useState(false)
   const dotRef = React.useRef<HTMLDivElement>(null)
   const ringRef = React.useRef<HTMLDivElement>(null)
 
   React.useEffect(() => {
-    // Only activate on pointer devices that support hover and not reduced-motion
     const isTouch = window.matchMedia("(hover: none)").matches
     const isReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
@@ -17,6 +17,7 @@ export function FulcraCursor() {
     if (isTouch || isReduced) return
 
     const frame = requestAnimationFrame(() => setMounted(true))
+    document.body.classList.add("fulcra-custom-cursor")
 
     let mouseX = 0
     let mouseY = 0
@@ -47,13 +48,9 @@ export function FulcraCursor() {
       const target = e.target as HTMLElement | null
       if (!target) return
       const interactive = target.closest(
-        "a, button, [role='button'], input, select, .interactive"
+        "a, button, [role='button'], input, select, .interactive, .tilt-3d, .loop-step"
       )
-      if (interactive && ringRef.current) {
-        ringRef.current.classList.add("cursor-hover")
-      } else if (ringRef.current) {
-        ringRef.current.classList.remove("cursor-hover")
-      }
+      setIsHovered(Boolean(interactive))
     }
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true })
@@ -62,9 +59,10 @@ export function FulcraCursor() {
 
     return () => {
       cancelAnimationFrame(frame)
+      cancelAnimationFrame(animFrameId)
+      document.body.classList.remove("fulcra-custom-cursor")
       window.removeEventListener("mousemove", handleMouseMove)
       window.removeEventListener("mouseover", handleMouseOver)
-      cancelAnimationFrame(animFrameId)
     }
   }, [])
 
@@ -75,12 +73,16 @@ export function FulcraCursor() {
       <div
         ref={dotRef}
         aria-hidden="true"
-        className="pointer-events-none fixed top-0 left-0 z-50 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground transition-opacity duration-150"
+        className="pointer-events-none fixed top-0 left-0 z-50 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#14161F]"
       />
       <div
         ref={ringRef}
         aria-hidden="true"
-        className="border-ink-300 pointer-events-none fixed top-0 left-0 z-50 h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full border transition-[width,height,border-color,background-color] duration-200 ease-out [&.cursor-hover]:h-14 [&.cursor-hover]:w-14 [&.cursor-hover]:border-primary [&.cursor-hover]:bg-accent/40"
+        className={`pointer-events-none fixed top-0 left-0 z-50 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all duration-200 ease-out ${
+          isHovered
+            ? "h-14 w-14 border border-[#3552E0] bg-[#EFF2FD]/60 shadow-xs"
+            : "h-7 w-7 border border-[#A8AAB2] bg-transparent"
+        }`}
       />
     </>
   )

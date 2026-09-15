@@ -2,6 +2,7 @@ import * as React from "react"
 import { PublicHeader } from "@/components/fulcra/navigation/public-header"
 import { PublicFooter } from "@/components/fulcra/navigation/public-footer"
 import { FulcraCursor } from "@/components/fulcra/shared/fulcra-cursor"
+import { GrainOverlay } from "@/components/fulcra/shared/grain-overlay"
 import { HeroSection } from "@/components/fulcra/landing/hero-section"
 import { SixStepLoop } from "@/components/fulcra/landing/six-step-loop"
 import { MatchAnalysisSection } from "@/components/fulcra/landing/match-analysis-section"
@@ -18,7 +19,8 @@ export const metadata = {
 
 export default function LandingPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-background text-foreground selection:bg-accent selection:text-accent-foreground">
+    <div className="relative flex min-h-screen flex-col bg-background text-foreground selection:bg-accent selection:text-accent-foreground">
+      <GrainOverlay />
       <FulcraCursor />
       <PublicHeader />
       <main className="flex-1">

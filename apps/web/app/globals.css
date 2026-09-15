@@ -353,3 +353,12 @@
     background: var(--skeleton-base);
   }
 }
+
+@media (hover: hover) and (pointer: fine) {
+  body.fulcra-custom-cursor,
+  body.fulcra-custom-cursor a,
+  body.fulcra-custom-cursor button,
+  body.fulcra-custom-cursor input {
+    cursor: none !important;
+  }
+}
