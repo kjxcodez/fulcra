@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
   Empty,
@@ -20,7 +21,12 @@ import { PreferencesSection } from "@/components/fulcra/candidate/preferences-se
 import { ProfileFormDialog } from "@/components/fulcra/candidate/profile-form-dialog"
 import { SkillsSection } from "@/components/fulcra/candidate/skills-section"
 import { useCandidateProfile } from "@/components/fulcra/candidate/use-candidate-profile"
-import { AlertTriangleIcon, RefreshCwIcon, UserPlusIcon } from "lucide-react"
+import {
+  AlertTriangleIcon,
+  RefreshCwIcon,
+  UserPlusIcon,
+  CheckCircle2,
+} from "lucide-react"
 
 export default function CandidateProfilePage() {
   const {
@@ -44,6 +50,16 @@ export default function CandidateProfilePage() {
   } = useCandidateProfile()
 
   const [isCreateOpen, setIsCreateOpen] = React.useState(false)
+
+  // Compute profile evidence completeness ratio
+  const experienceCount = candidate?.experiences?.length ?? 0
+  const skillsCount = candidate?.skills?.length ?? 0
+  const educationCount = candidate?.education?.length ?? 0
+  const totalVerifiedRecords = experienceCount + skillsCount + educationCount
+  const completenessPercent = Math.min(
+    100,
+    Math.round(20 + totalVerifiedRecords * 10)
+  )
 
   return (
     <AppShell>
@@ -129,6 +145,40 @@ export default function CandidateProfilePage() {
         {/* Candidate Profile Loaded */}
         {!loading && candidate && (
           <div className="animate-in space-y-6 duration-300 fade-in-0">
+            {/* Profile Completeness & Evidence Audit State Card */}
+            <div className="rounded-xl border border-border bg-card p-4 shadow-xs">
+              <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-candidate/20 bg-candidate/10 font-mono text-sm font-bold text-candidate">
+                    {completenessPercent}%
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 font-heading text-sm font-semibold text-foreground">
+                      Profile Completeness & Evidence Record
+                      <Badge
+                        variant="outline"
+                        className="border-candidate/40 bg-candidate/10 font-mono text-[10px] text-candidate"
+                      >
+                        Canonical Source of Truth
+                      </Badge>
+                    </div>
+                    <div className="font-mono text-xs text-muted-foreground">
+                      {experienceCount} Experience records · {skillsCount}{" "}
+                      Skills · {educationCount} Credentials
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
+                  <CheckCircle2 className="text-success-text h-4 w-4 shrink-0" />
+                  <span>
+                    Verified profile evidence grounds all tailored resume
+                    bullets and diagnostics.
+                  </span>
+                </div>
+              </div>
+            </div>
+
             <CandidateHeader
               profile={candidate.profile}
               onUpdate={handleUpdateProfile}
