@@ -45,11 +45,11 @@ export function HeroSection() {
               before you apply.
             </h1>
 
-            {/* Subtitle */}
+            {/* Subtitle per Section 3.2 */}
             <p className="max-w-md text-base leading-relaxed text-muted-foreground">
-              Fulcra reads the job the way it reads your resume, then shows you
-              exactly where you stand — what matches, what&apos;s missing, and
-              what to fix — before an application goes out.
+              Fulcra compares real job requirements with your experience,
+              skills, preferences, and resume evidence — then shows you what
+              matches, what&apos;s missing, and what to do next.
             </p>
 
             {/* Actions */}
@@ -58,15 +58,15 @@ export function HeroSection() {
                 <Link href="/jobs">
                   <Button
                     size="lg"
-                    className="bg-primary font-medium text-white shadow-sm transition-shadow hover:shadow-md"
+                    className="bg-candidate font-medium text-white shadow-sm transition-shadow hover:bg-[#8C6E2E] hover:shadow-md"
                   >
-                    Weigh your first job
+                    Explore jobs
                   </Button>
                 </Link>
               </Magnetic>
 
               <Magnetic strength={0.25}>
-                <a href="#matching">
+                <Link href="/how-scoring-works">
                   <Button
                     variant="outline"
                     size="lg"
@@ -74,13 +74,14 @@ export function HeroSection() {
                   >
                     See how scoring works
                   </Button>
-                </a>
+                </Link>
               </Magnetic>
             </div>
 
             {/* Monospace footnote */}
             <div className="pt-2 font-mono text-xs text-muted-foreground">
-              no résumé rewrite guesswork · evidence-linked matching
+              evidence-linked matching · no resume guesswork · transparent
+              methodology
             </div>
           </motion.div>
 

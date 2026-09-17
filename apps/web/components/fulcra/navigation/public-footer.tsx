@@ -34,8 +34,19 @@ export function PublicFooter() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#matching" className="hover:text-foreground">
-                    Matching
+                  <Link
+                    href="/how-scoring-works"
+                    className="hover:text-foreground"
+                  >
+                    How scoring works
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/what-fulcra-is"
+                    className="hover:text-foreground"
+                  >
+                    What Fulcra is & isn&apos;t
                   </Link>
                 </li>
                 <li>
@@ -46,7 +57,7 @@ export function PublicFooter() {
                 <li>
                   <Link
                     href="/jobs"
-                    className="font-medium text-primary hover:text-foreground"
+                    className="font-medium text-candidate hover:text-candidate/80"
                   >
                     Explore jobs
                   </Link>
@@ -66,12 +77,12 @@ export function PublicFooter() {
                 </li>
                 <li>
                   <span className="cursor-not-allowed text-muted-foreground/60">
-                    Resume intelligence (soon)
+                    Resume intelligence (preview)
                   </span>
                 </li>
                 <li>
                   <span className="cursor-not-allowed text-muted-foreground/60">
-                    Application tracker (soon)
+                    Application tracker (preview)
                   </span>
                 </li>
               </ul>
@@ -94,7 +105,7 @@ export function PublicFooter() {
                 </li>
                 <li>
                   <span className="font-mono text-[11px] text-muted-foreground">
-                    v0.8.0-beta
+                    Evidence-Linked Matching Engine
                   </span>
                 </li>
               </ul>
@@ -106,8 +117,8 @@ export function PublicFooter() {
         <div className="max-w-4xl pt-6 font-mono text-[11px] leading-relaxed text-muted-foreground">
           Match scores and ATS diagnostics are compatibility estimates based on
           the information available — they simulate how a system is likely to
-          read your application, not a guarantee of any specific employer&apos;s
-          or ATS&apos;s ranking.
+          treat your application, not a guarantee of any specific
+          employer&apos;s or ATS&apos;s ranking.
         </div>
       </div>
     </footer>

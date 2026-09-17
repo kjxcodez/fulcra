@@ -10,10 +10,10 @@ import { Magnetic } from "@/components/fulcra/shared/magnetic"
 export function CtaBand() {
   return (
     <section className="relative overflow-hidden bg-[#14161F] py-20 text-white">
-      {/* Ambient glowing radial auras */}
+      {/* Ambient glowing radial aura */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-1/2 -right-24 h-96 w-96 -translate-y-1/2 rounded-full bg-primary/25 blur-3xl"
+        className="pointer-events-none absolute top-1/2 -right-24 h-96 w-96 -translate-y-1/2 rounded-full bg-role/20 blur-3xl"
       />
       <div
         aria-hidden="true"
@@ -33,8 +33,8 @@ export function CtaBand() {
               Stop applying blind.
             </h2>
             <p className="text-sm leading-relaxed text-zinc-400">
-              Bring one job and one resume — see the full breakdown in under a
-              minute.
+              Bring one job and your profile evidence — see the full breakdown
+              with reasons behind every score in under a minute.
             </p>
           </motion.div>
 
@@ -42,7 +42,7 @@ export function CtaBand() {
             <Link href="/jobs" className="shrink-0">
               <Button
                 size="lg"
-                className="gap-2 bg-primary px-6 text-sm font-medium text-white shadow-lg transition-transform hover:bg-primary/90"
+                className="gap-2 bg-candidate px-7 text-sm font-semibold text-white shadow-lg transition-transform hover:bg-[#8C6E2E]"
               >
                 Explore jobs
                 <ArrowRight className="h-4 w-4" />

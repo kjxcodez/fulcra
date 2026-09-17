@@ -76,6 +76,12 @@ export function PublicHeader() {
               For recruiters
             </Link>
             <Link
+              href="/how-scoring-works"
+              className="transition-colors hover:text-foreground"
+            >
+              Methodology
+            </Link>
+            <Link
               href="/jobs"
               className="transition-colors hover:text-foreground"
             >
@@ -96,7 +102,7 @@ export function PublicHeader() {
             <Link href="/jobs">
               <Button
                 size="sm"
-                className="bg-primary text-xs font-medium text-white shadow-xs"
+                className="bg-candidate text-xs font-medium text-white shadow-xs hover:bg-[#8C6E2E]"
               >
                 Explore jobs
               </Button>
@@ -146,9 +152,16 @@ export function PublicHeader() {
                 For recruiters
               </Link>
               <Link
+                href="/how-scoring-works"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-1.5 transition-colors hover:text-primary"
+              >
+                Methodology
+              </Link>
+              <Link
                 href="/jobs"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-1.5 font-semibold text-primary transition-colors hover:text-primary"
+                className="py-1.5 font-semibold text-candidate transition-colors hover:text-candidate/80"
               >
                 Explore jobs
               </Link>
@@ -167,7 +180,7 @@ export function PublicHeader() {
                 <Link href="/jobs" onClick={() => setMobileMenuOpen(false)}>
                   <Button
                     size="sm"
-                    className="w-full bg-primary text-xs text-white"
+                    className="w-full bg-candidate text-xs font-medium text-white hover:bg-[#8C6E2E]"
                   >
                     Explore jobs
                   </Button>
