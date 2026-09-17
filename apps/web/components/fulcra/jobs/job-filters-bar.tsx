@@ -10,7 +10,7 @@ import type {
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { NativeSelect } from "@/components/ui/native-select"
-import { Search, X, SlidersHorizontal } from "lucide-react"
+import { Search, X, SlidersHorizontal, DollarSign } from "lucide-react"
 
 interface JobFiltersBarProps {
   filters: JobFilters
@@ -35,7 +35,8 @@ export function JobFiltersBar({
     (filters.workType && filters.workType !== "all") ||
     (filters.seniority && filters.seniority !== "all") ||
     (filters.source && filters.source !== "all") ||
-    (filters.sortBy && filters.sortBy !== "recent")
+    (filters.sortBy && filters.sortBy !== "recent") ||
+    (filters.minSalary && filters.minSalary > 0)
   )
 
   const clearAllFilters = () => {
@@ -46,6 +47,7 @@ export function JobFiltersBar({
       seniority: "all",
       source: "all",
       sortBy: "recent",
+      minSalary: 0,
     })
   }
 
@@ -66,13 +68,13 @@ export function JobFiltersBar({
         <Button
           type="submit"
           size="default"
-          className="shrink-0 bg-primary text-xs text-white"
+          className="shrink-0 bg-role text-xs text-white hover:bg-role/90"
         >
           Search
         </Button>
       </form>
 
-      {/* Dropdown Filters Row */}
+      {/* Dropdown Filters & Compensation Slider Row */}
       <div className="flex flex-wrap items-center gap-3 pt-1 text-xs">
         <div className="flex items-center gap-1.5 text-muted-foreground">
           <SlidersHorizontal className="h-3.5 w-3.5" />
@@ -135,6 +137,34 @@ export function JobFiltersBar({
           <option value="direct">Direct Site</option>
         </NativeSelect>
 
+        {/* Compensation Range Slider per Section 4.1 */}
+        <div className="flex items-center gap-2 rounded-md border border-border/80 bg-muted/40 px-2.5 py-1">
+          <DollarSign className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
+          <span className="font-mono text-[11px] whitespace-nowrap text-muted-foreground">
+            Min Comp:
+          </span>
+          <input
+            type="range"
+            min="0"
+            max="220000"
+            step="10000"
+            value={filters.minSalary || 0}
+            onChange={(e) =>
+              onFiltersChange({
+                ...filters,
+                minSalary: Number(e.target.value),
+              })
+            }
+            className="h-1.5 w-24 cursor-pointer appearance-none rounded-lg bg-border accent-[#3552E0]"
+            aria-label="Filter by minimum compensation"
+          />
+          <span className="w-12 text-right font-mono text-[11px] font-semibold text-foreground">
+            {filters.minSalary
+              ? `$${(filters.minSalary / 1000).toFixed(0)}k+`
+              : "Any"}
+          </span>
+        </div>
+
         {/* Sort Select */}
         <div className="ml-auto flex items-center gap-2">
           <span className="font-mono text-[11px] text-muted-foreground">
@@ -170,13 +200,13 @@ export function JobFiltersBar({
         )}
       </div>
 
-      {/* Result Count Banner */}
+      {/* Result Count Banner with Honesty Sourcing per Rule 4 */}
       <div className="flex items-center justify-between border-t border-border/60 pt-2 font-mono text-xs text-muted-foreground">
         <span>
-          Showing <b>{totalCount}</b> verified technical{" "}
+          Showing <b>{totalCount}</b> sourced & normalized{" "}
           {totalCount === 1 ? "role" : "roles"}
         </span>
-        <span>Same-origin public discovery</span>
+        <span>Normalized ATS listings · Direct application</span>
       </div>
     </div>
   )

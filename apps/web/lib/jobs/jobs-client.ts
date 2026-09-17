@@ -36,6 +36,12 @@ export class JobsClient {
       filtered = filtered.filter((j) => j.source === filters.source)
     }
 
+    if (filters.minSalary && filters.minSalary > 0) {
+      filtered = filtered.filter(
+        (j) => (j.salary?.max || j.salary?.min || 0) >= filters.minSalary!
+      )
+    }
+
     if (filters.sortBy === "salary") {
       filtered.sort((a, b) => (b.salary?.max || 0) - (a.salary?.max || 0))
     } else if (filters.sortBy === "title") {

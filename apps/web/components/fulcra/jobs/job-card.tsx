@@ -6,13 +6,22 @@ import type { Job } from "@/lib/jobs/jobs-types"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { AuthGateDialog } from "@/components/fulcra/auth/auth-gate-dialog"
-import { MapPin, DollarSign, Calendar, Sparkles } from "lucide-react"
+import {
+  MapPin,
+  DollarSign,
+  Calendar,
+  Sparkles,
+  Scale,
+  Check,
+} from "lucide-react"
 
 interface JobCardProps {
   job: Job
+  isCompared?: boolean
+  onToggleCompare?: () => void
 }
 
-export function JobCard({ job }: JobCardProps) {
+export function JobCard({ job, isCompared, onToggleCompare }: JobCardProps) {
   const [authGateOpen, setAuthGateOpen] = React.useState(false)
 
   const formatSalary = (salary?: Job["salary"]) => {
@@ -34,7 +43,7 @@ export function JobCard({ job }: JobCardProps) {
 
   return (
     <>
-      <div className="group relative rounded-xl border border-border bg-card p-5 transition-all duration-200 hover:border-border/60 hover:shadow-sm sm:p-6">
+      <div className="group relative rounded-xl border border-border bg-card p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-role/50 hover:shadow-sm sm:p-6">
         {/* Top Header: Company, Title & Badges */}
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div className="space-y-1">
@@ -55,14 +64,14 @@ export function JobCard({ job }: JobCardProps) {
             </div>
 
             <Link href={`/jobs/${job.slug || job.id}`}>
-              <h3 className="font-heading text-lg font-semibold tracking-tight text-foreground transition-colors group-hover:text-primary">
+              <h3 className="font-heading text-lg font-semibold tracking-tight text-foreground transition-colors group-hover:text-role">
                 {job.title}
               </h3>
             </Link>
           </div>
 
-          {/* Location & Seniority Badges */}
-          <div className="flex shrink-0 flex-wrap items-center gap-1.5">
+          {/* Location, Seniority Badges & Compare Affordance */}
+          <div className="flex shrink-0 flex-wrap items-center gap-2">
             <Badge
               variant="outline"
               className="border-border text-[11px] text-muted-foreground capitalize"
@@ -71,10 +80,31 @@ export function JobCard({ job }: JobCardProps) {
             </Badge>
             <Badge
               variant="default"
-              className="text-[11px] font-medium capitalize"
+              className="border border-border bg-muted text-[11px] font-medium text-foreground capitalize hover:bg-muted"
             >
               {job.location.workType}
             </Badge>
+
+            {/* Compare Affordance per Section 4.1 */}
+            {onToggleCompare && (
+              <button
+                type="button"
+                onClick={onToggleCompare}
+                className={`inline-flex cursor-pointer items-center gap-1 rounded-md border px-2 py-1 font-mono text-[11px] transition-colors ${
+                  isCompared
+                    ? "border-role bg-role/10 font-semibold text-role"
+                    : "border-border/80 text-muted-foreground hover:border-border hover:text-foreground"
+                }`}
+                aria-label={`Compare ${job.title}`}
+              >
+                {isCompared ? (
+                  <Check className="h-3 w-3 text-role" />
+                ) : (
+                  <Scale className="h-3 w-3" />
+                )}
+                <span>{isCompared ? "Compared" : "+ Compare"}</span>
+              </button>
+            )}
           </div>
         </div>
 
@@ -111,7 +141,7 @@ export function JobCard({ job }: JobCardProps) {
           ))}
         </div>
 
-        {/* Footer: Match Banner & Action CTA */}
+        {/* Footer: Primary View Role CTA + Secondary Match Score Affordance per Section 4.1 */}
         <div className="mt-5 flex flex-col gap-3 border-t border-border/80 pt-4 sm:flex-row sm:items-center sm:justify-between">
           <button
             type="button"
@@ -125,19 +155,16 @@ export function JobCard({ job }: JobCardProps) {
             </span>
           </button>
 
+          {/* Primary Action is 'View role' per Section 4.1 */}
           <div className="flex items-center gap-2">
             <Link href={`/jobs/${job.slug || job.id}`}>
-              <Button variant="outline" size="sm" className="text-xs">
+              <Button
+                size="sm"
+                className="bg-role px-4 text-xs font-medium text-white hover:bg-role/90"
+              >
                 View role
               </Button>
             </Link>
-            <Button
-              size="sm"
-              onClick={() => setAuthGateOpen(true)}
-              className="gap-1 bg-candidate text-xs text-white hover:bg-candidate/90"
-            >
-              Weigh match
-            </Button>
           </div>
         </div>
       </div>

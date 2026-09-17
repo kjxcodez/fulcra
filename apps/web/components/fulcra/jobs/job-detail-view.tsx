@@ -15,8 +15,8 @@ import {
   Sparkles,
   Bookmark,
   CheckCircle2,
-  Info,
 } from "lucide-react"
+import { JobDetailContent } from "./job-detail-content"
 
 interface JobDetailViewProps {
   job: Job
@@ -77,7 +77,10 @@ export function JobDetailView({ job }: JobDetailViewProps) {
           </div>
 
           <div className="flex items-center gap-2">
-            <Badge variant="default" className="text-xs capitalize">
+            <Badge
+              variant="default"
+              className="border border-border bg-muted text-xs text-foreground capitalize hover:bg-muted"
+            >
               {job.location.workType}
             </Badge>
             <Badge variant="outline" className="text-xs capitalize">
@@ -105,7 +108,35 @@ export function JobDetailView({ job }: JobDetailViewProps) {
           </div>
         </div>
 
-        {/* Action Buttons */}
+        {/* Role Intelligence Snapshot */}
+        <div className="grid grid-cols-1 gap-3 rounded-lg border border-border/80 bg-muted/25 p-3.5 font-mono text-xs sm:grid-cols-3">
+          <div>
+            <div className="text-[10px] text-muted-foreground uppercase">
+              Target Compensation
+            </div>
+            <div className="mt-0.5 font-semibold text-foreground">
+              {formatSalary(job.salary)}
+            </div>
+          </div>
+          <div>
+            <div className="text-[10px] text-muted-foreground uppercase">
+              What Matters Most
+            </div>
+            <div className="mt-0.5 truncate font-semibold text-role">
+              {job.tags?.slice(0, 3).join(" · ") || "Engineering"}
+            </div>
+          </div>
+          <div>
+            <div className="text-[10px] text-muted-foreground uppercase">
+              Parsing Audit
+            </div>
+            <div className="text-success-text mt-0.5 flex items-center gap-1 font-semibold">
+              <CheckCircle2 className="h-3.5 w-3.5" /> Structured Requirements
+            </div>
+          </div>
+        </div>
+
+        {/* Action Buttons: Apply (Indigo), See Match (Brass), Save (Outline) */}
         <div className="flex flex-wrap items-center gap-3">
           <a
             href={job.sourceUrl}
@@ -115,11 +146,11 @@ export function JobDetailView({ job }: JobDetailViewProps) {
           >
             <Button
               size="default"
-              className="w-full gap-2 bg-primary text-xs font-medium text-white"
+              className="w-full gap-2 bg-role text-xs font-semibold text-white hover:bg-role/90"
             >
               <span>
                 Apply on{" "}
-                {job.source.charAt(0).toUpperCase() + job.source.slice(1)}
+                {job.source.charAt(0).toUpperCase() + job.source.slice(1)} ATS
               </span>
               <ExternalLink className="h-3.5 w-3.5" />
             </Button>
@@ -128,10 +159,10 @@ export function JobDetailView({ job }: JobDetailViewProps) {
           <Button
             size="default"
             onClick={() => triggerAuthGate(`Weigh Match for ${job.title}`)}
-            className="gap-2 bg-candidate text-xs text-white hover:bg-candidate/90"
+            className="gap-2 bg-candidate text-xs font-semibold text-white hover:bg-[#8C6E2E]"
           >
             <Sparkles className="h-3.5 w-3.5" />
-            <span>See how I match</span>
+            <span>See how it&apos;d match</span>
           </Button>
 
           <Button
@@ -141,88 +172,13 @@ export function JobDetailView({ job }: JobDetailViewProps) {
             className="gap-1.5 text-xs text-muted-foreground hover:text-foreground"
           >
             <Bookmark className="h-3.5 w-3.5" />
-            <span>Save</span>
+            <span>Save role</span>
           </Button>
         </div>
       </div>
 
-      {/* Role Overview */}
-      <div className="space-y-6 rounded-xl border border-border bg-card p-6 text-sm sm:p-8">
-        <div>
-          <h2 className="mb-3 font-heading text-lg font-semibold text-foreground">
-            Role Overview
-          </h2>
-          <p className="leading-relaxed text-muted-foreground">
-            {job.overview}
-          </p>
-        </div>
-
-        {/* Responsibilities */}
-        {job.responsibilities?.length > 0 && (
-          <div>
-            <h2 className="mb-3 font-heading text-lg font-semibold text-foreground">
-              Key Responsibilities
-            </h2>
-            <ul className="space-y-2 text-muted-foreground">
-              {job.responsibilities.map((r, i) => (
-                <li key={i} className="flex items-start gap-2.5">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                  <span>{r}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {/* Requirements */}
-        {job.requirements?.length > 0 && (
-          <div>
-            <h2 className="mb-3 font-heading text-lg font-semibold text-foreground">
-              Requirements & Must-Haves
-            </h2>
-            <ul className="space-y-2 text-muted-foreground">
-              {job.requirements.map((req, i) => (
-                <li key={i} className="flex items-start gap-2.5">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-candidate" />
-                  <span>{req}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {/* Benefits */}
-        {job.benefits?.length > 0 && (
-          <div>
-            <h2 className="mb-3 font-heading text-lg font-semibold text-foreground">
-              Benefits & Perks
-            </h2>
-            <ul className="grid grid-cols-1 gap-2.5 text-muted-foreground sm:grid-cols-2">
-              {job.benefits.map((b, i) => (
-                <li key={i} className="flex items-start gap-2 text-xs">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-success" />
-                  <span>{b}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {/* Source Attribution Notice */}
-        <div className="flex items-start gap-3 rounded-lg border border-border/80 bg-muted/30 p-4 text-xs text-muted-foreground">
-          <Info className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-          <div className="space-y-1">
-            <span className="font-semibold text-foreground">
-              Source Attribution
-            </span>
-            <p>
-              This posting is aggregated from {job.source.toUpperCase()}. Fulcra
-              provides explainable match scoring and resume tailoring; actual
-              application submission occurs directly on the company&apos;s ATS.
-            </p>
-          </div>
-        </div>
-      </div>
+      {/* Role Overview, Parsed Requirements & Benefits */}
+      <JobDetailContent job={job} />
 
       <AuthGateDialog
         open={authGateOpen}

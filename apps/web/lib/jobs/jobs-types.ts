@@ -49,6 +49,7 @@ export interface JobFilters {
   seniority?: JobSeniority | "all"
   source?: JobSource | "all"
   sortBy?: "recent" | "salary" | "title"
+  minSalary?: number
 }
 
 export interface JobSearchResult {
